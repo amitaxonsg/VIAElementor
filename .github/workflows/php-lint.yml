@@ -1,0 +1,22 @@
+name: PHP syntax check
+on:
+  push:
+    paths:
+      - 'wp-cli/**'
+      - 'mu-plugins/**'
+      - '.github/workflows/php-lint.yml'
+  pull_request:
+    paths:
+      - 'wp-cli/**'
+      - 'mu-plugins/**'
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP version
+        run: php -v
+      - name: Lint committed PHP
+        run: |
+          set -e
+          find wp-cli mu-plugins -type f -name '*.php' -print0 | xargs -0 -n1 php -l
