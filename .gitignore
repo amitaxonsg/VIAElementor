@@ -1,0 +1,19 @@
+# This is a public source/docs repository — keep secrets and backups out.
+.env
+.env.*
+!.env.example
+wp-config.php
+**/wp-config.php
+*.sql
+*.sql.gz
+*.bak
+*.backup
+*.log
+**/backups/
+**/uploads/
+**/private/
+*.pem
+*.key
+id_rsa*
+.DS_Store
+Thumbs.db
