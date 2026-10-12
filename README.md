@@ -32,6 +32,7 @@ See [Brand Guide](docs/BRAND-GUIDE.md).
 - [Elementor editor handbook](docs/EDITOR-GUIDE.md) — global colors and fonts, buttons, navigation dropdowns, page titles, header/footer, mobile.
 - [WordPress page inventory](docs/PAGES-AND-STATUS.md) — document IDs, route mappings, alternate Lovable source warnings.
 - [Deployment and rollback](docs/OPERATIONS.md) — guarded WP-CLI operations, backup and validation.
+- [Reviewed WordPress-to-GitHub export](docs/SYNC-TO-GITHUB.md) — capture actual Elementor JSON without publishing unreviewed content.
 - [Implementation changelog](CHANGELOG.md).
 
 ## Scripts
