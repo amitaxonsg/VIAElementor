@@ -27,6 +27,10 @@ Version-controlled implementation documentation and WordPress migration tools fo
 
 See [Brand Guide](docs/BRAND-GUIDE.md).
 
+## Continue in another chat
+
+**[Latest project handoff and next steps](docs/NEXT-CHAT-HANDOFF.md)** — current hero with supplied background photograph, animation counters, approved typography, pending visual checks and SSH workflow. Read this first before further changes.
+
 ## Edit and administer
 
 - [Elementor editor handbook](docs/EDITOR-GUIDE.md) — global colors and fonts, buttons, navigation dropdowns, page titles, header/footer, mobile.
@@ -49,4 +53,4 @@ Never commit `wp-config.php`, secrets, private backups, database dumps, user rec
 
 ## Current migration checkpoint
 
-The prior server logs reported 29 VIA pages with Elementor content and **2,341** Global Style references across 31 documents (pages plus Header 57 / Footer 58). About page **26** was previewed successfully with shared templates. The homepage **21** still appeared to use its own embedded header/footer in the last screenshots. This repository's migration script addresses that difference but does **not** claim it has been deployed.
+Prior server logs reported 29 VIA pages with Elementor content and **2,341** Global Style references across 31 documents (pages plus Header 57 / Footer 58). The latest screenshot shows the **approved photographic homepage hero** with lower Sylvia/counter strip. Exact server status of the most recent typography cleanup and shared-header/footer deployment still requires fresh WordPress verification; see [handoff](docs/NEXT-CHAT-HANDOFF.md). The repository contains guarded scripts but does **not** claim they have all been deployed.
