@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-13 — Latest photographic homepage hero and handoff
+
+- Added native Elementor hero tools for the approved photo background with headline/buttons on the left and **one lower Sylvia/credential/animated-statistics strip**. The previous card layouts were rejected.
+- Added editor-controlled animated **35+** and **3500+** counters, large APAC + Experience and Global-font/color styling.
+- Added slogan update: **unearth unconscious drivers.** in Global Orange, **Lasting impact..** in Global Blue.
+- Added latest `wp-cli/hero-clean-typography.php` patch: remove left editorial box and statistics divider; style **Sylvia Fernandes** bold Global Orange, credentials regular Inter/Navy. Its GitHub source is committed; last on-server execution is not independently verified.
+- Added [NEXT-CHAT-HANDOFF](docs/NEXT-CHAT-HANDOFF.md) with environment, source-of-truth boundaries, precise status and next steps.
+- No new claim that the actual WordPress database or private image assets have been uploaded to this public repository.
+
 ## 2026-10-13 — Repository initialization
 
 - Documented the VIA Frontiers development environment, approved six-color palette and font pairing.
