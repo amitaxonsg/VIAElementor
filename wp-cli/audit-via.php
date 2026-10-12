@@ -65,6 +65,12 @@ foreach ([57 => 'Header', 58 => 'Footer'] as $id => $label) {
         WP_CLI::warning("Missing {$label} {$id}");
         continue;
     }
+    $templateNodes = json_decode((string)get_post_meta($id, '_elementor_data', true), true);
+    if (is_array($templateNodes)) {
+        $walk($templateNodes);
+    } else {
+        WP_CLI::warning("Invalid Elementor template content: {$id}");
+    }
     WP_CLI::log("{$label} {$id}: {$post->post_status}; type=" .
         get_post_meta($id, 'ehf_template_type', true));
     WP_CLI::log('  includes=' .
