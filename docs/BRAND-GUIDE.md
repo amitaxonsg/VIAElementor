@@ -27,6 +27,14 @@ Neutral white `#FFFFFF` is allowed for light page backgrounds and the approved h
 
 Alternative Google Font styles **available but not active**: Fraunces (editorial), Manrope (navigation), DM Sans (body), Plus Jakarta Sans (labels). A customer may select these in Global Fonts; doing so is a design change and should be reviewed.
 
+## Homepage hero typography decisions (October 2026)
+
+- Site-wide font-family budget: **two active families only**. Large headings, Sylvia's name, 35+, 3500+ and APAC use **Cormorant Garamond**; body, labels, slogan, buttons, navigation and footer use **Inter**.
+- “**unearth unconscious drivers.**” is **Global Orange** `#F1592D`; “**Lasting impact..**” is **Global Blue** `#7499D0`. Slogan typography: **Inter ExtraBold**. The logo itself is supplied artwork and its original typeface is **not identified**.
+- **Sylvia Fernandes**: bold Cormorant Garamond in Global Orange; credentials: regular Inter in Global Navy.
+- Statistics: Elementor native animated counters **35+ Years Experience** and **3500+ Clients**, plus large static **APAC** with **Experience** underneath in Inter / Blue. All numbers and APAC use Global Cormorant.
+- Approved photographed hero layout: original wide background, editable copy/buttons at left, **one information strip below**. No floating portrait or third card. Latest requested refinement removes the left text panel's background/border and the statistics strip's top divider; verify the last patch on the server.
+
 ## Elementor Global Style reference
 
 Active development Site Kit: **post ID 19**. System palette: Primary Navy, Secondary Blue, Text Navy, Accent Orange. Additional custom global color tokens: `via_navy`, `via_orange`, `via_apricot`, `via_blue`, `via_stone`, `via_cream`, plus neutral/compatibility tokens. Additional typography presets include `via_navigation`, `viadrop1`, `via_buttons`, `via_footer`, `via_page_titles`, and `via_small_labels`.
