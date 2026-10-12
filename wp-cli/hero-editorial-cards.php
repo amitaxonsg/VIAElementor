@@ -116,7 +116,7 @@ $rs['flex_gap'] = $gap(20);
 $rs['flex_gap_tablet'] = $gap(18);
 $rs['flex_gap_mobile'] = $gap(16);
 
-// Left: understated white editorial panel with a thin orange accent edge.
+// Left: understated white editorial panel with an emphasized Stone border and Orange kicker.
 $cs = &$copy['settings'];
 $cs['content_width'] = 'full';
 $cs['width'] = $sz(45, '%');
