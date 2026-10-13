@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-13 — APPROVED styling freeze, current Saved Templates, and 36-template roadmap
+
+- User confirmed the Homepage 21 branding and layout are **working again** after Elementor Global Kit 19 generated stylesheet `post-19.css` was restored/relinked. Site Kit 19 retained the approved Orange/Navy/Blue variables; no template data or Global Colour values were deleted. The initiating event is not conclusively known. **Do not flush CSS, edit generated stylesheets, reset Typography Studio, or replace approved pages blindly.**
+- Established [approved working baseline](docs/APPROVED-WORKING-BASELINE-20261013.md), with current real Elementor IDs and “do not change” rules for future work.
+- Confirmed six Saved Container templates with IDs **178, 196, 197, 198, 199, 218**, including `Inner Pages Hero Template`. See [30–40 Template Roadmap](docs/TEMPLATE-ROADMAP-30-40.md) proposing **36** total templates (six existing + thirty future concepts), delivered in small verified batches.
+- Added [read-only baseline auditor](wp-cli/audit-approved-via-baseline.php) to check the live Kit 19 globals, generated CSS and Saved Template records before/after major operations.
+- Documented [detached after-template backup procedure](docs/OPERATIONS.md), running the pre-existing server-local full backup creator under `amitaxon`, with completion/log validation and both SHA-256 checks. **This new after-template backup is still pending SSH execution and verification; do not call it complete.**
+- The previous verified private snapshot `VIA-FULL-20261013-120355` remains available but predates the newer Saved Templates. Do not put any SQL, backups or sensitive data into this public repo.
+- Existing scripts and historical migration notes are kept for traceability; current approved pages and template IDs have precedence over older not-yet-deployed text.
+
+
 ## 2026-10-13 — Reusable inner-page hero and template spacing standard
 
 - Added `wp-cli/create-inner-pages-hero-template.php` to create a separate full-width, 35vh desktop native Elementor Container template named **Inner Pages Hero Template**, with editable background, breadcrumb, heading, intro, button and optional copy, following Sylvia's outer padding and Site Kit 19 Global Styles.
