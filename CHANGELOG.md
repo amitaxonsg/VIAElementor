@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13 — FIRE timeline template candidate
+
+- Added `wp-cli/create-via-fire-timeline-template.php` for new `inner-20-FIRE-Timeline`, a separate native Elementor Free vertical numbered FIRE-process template matching the approved four-row concept.
+- Global Kit 19 colours and typography, Sylvia reference spacing, completely editable text and markers; no hardcoded fonts, injected CSS, sitewide changes, cache flush, or existing page modifications.
+- Local PHP syntax and simulated read-only dry-run passed; server creation and responsive approval **still pending**. [Editing and SSH guide](docs/FIRE-TIMELINE-ELEMENTOR-TEMPLATE.md).
+
 ## 2026-10-13 — Latest full-site backup verified (14:09 local)
 
 - User SSH output confirms private full WordPress recovery snapshot `VIA-FULL-20261013-140913` (~108 MB), with database, website archive and checksum verification reported successful.
