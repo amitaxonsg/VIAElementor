@@ -56,9 +56,9 @@ $paint=static function(array &$s,string $key,string $color)use($global):void{
     $global($s,$key,'colors',$color);
 };
 $font=static function(array &$s,string $preset,int $size,string $prefix='typography')use($global,$unit):void{
-    $s[$prefix.'_typography']='custom';
     unset($s[$prefix.'_font_family']);
     $global($s,$prefix.'_typography','typography',$preset);
+    $s[$prefix.'_typography']='custom';
     $s[$prefix.'_font_size']=$unit($size);
     $s[$prefix.'_font_size_mobile']=$unit($size);
 };
@@ -197,11 +197,17 @@ $sectionBase($path,'homepage-03-Pathways');
 
 // 2 — FIRE Approach: create one coloured heading row; preserve four existing steps.
 $fire=$top('000003f','04 FIRE approach');
-$expectChildren($fire,['000002d','000003e'],'FIRE section');
-[$fireTitle,$steps]=$fire['elements'];
-if (($fireTitle['widgetType']??'')!=='heading' ||
-    trim(preg_replace('/\s+/',' ',wp_strip_all_tags($fireTitle['settings']['title']??'')))!=='THE VIA APPROACH')
-    WP_CLI::error('FIRE title changed; no templates created.');
+$fireChildIds=array_column($fire['elements']??[],'id');
+if ($fireChildIds===['000002d','000003e']){
+    [$fireTitle,$steps]=$fire['elements'];
+    if (($fireTitle['widgetType']??'')!=='heading' ||
+        trim(preg_replace('/\s+/',' ',wp_strip_all_tags($fireTitle['settings']['title']??'')))!=='THE VIA APPROACH')
+        WP_CLI::error('FIRE title changed; no templates created.');
+} else {
+    // If the on-server FIRE redesign already has a two-colour heading,
+    // halt instead of accidentally duplicating a heading or discarding text.
+    WP_CLI::error('FIRE heading structure differs: '.implode(',',$fireChildIds).'. Send dry-run output for safe adaptation.');
+}
 $fireA=$fireTitle;$fireB=$fireTitle;
 $fireA['settings']['title']='THE VIA';
 $fireB['settings']['title']='APPROACH';
