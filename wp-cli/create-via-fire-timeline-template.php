@@ -140,12 +140,12 @@ foreach($steps as $i=>$step){
     $connector=$container('Timeline connector '.$number,'column',[],$connectorSettings);
     $rail=$container('Timeline number rail '.$number,'column',
         $i===count($steps)-1?[$num]:[$num,$connector],
-        ['width'=>$length(65),'width_tablet'=>$length(58),'width_mobile'=>$length(52),
+        ['width'=>$length(65),'width_tablet'=>$length(58),'width_mobile'=>$length(46),
          'flex_gap'=>$gap(8),'flex_align_items'=>'center','flex_justify_content'=>'flex-start']);
     $letterBadge=$circle($letter,'FIRE letter '.$letter,58,28,'primary','via_white');
     $dividerSettings=[
         'width'=>$length(2),'min_height'=>$length(44),
-        'width_mobile'=>$length(2),'min_height_mobile'=>$length(36),
+        'width_mobile'=>$length(44),'min_height_mobile'=>$length(2),
         'background_background'=>'classic','padding'=>$edge(0,0,0,0)
     ];
     $bind($dividerSettings,'background_color','colors','accent');
@@ -155,12 +155,14 @@ foreach($steps as $i=>$step){
         $body($explanation,'Explanation '.$number,16)
     ],['flex_wrap'=>'wrap','flex_justify_content'=>'flex-start',
        'flex_align_items'=>'baseline','flex_gap'=>$gap(5),
-       'flex_grow'=>1]);
+       'flex_grow'=>1, 'flex_direction_mobile'=>'column',
+       'flex_align_items_mobile'=>'flex-start']);
     $cardSettings=[
         'content_width'=>'full','width'=>$length(90,'%'),'width_tablet'=>$length(88,'%'),
-        'width_mobile'=>$length(84,'%'),
-        'flex_direction'=>'row','flex_direction_tablet'=>'row','flex_direction_mobile'=>'row',
-        'flex_wrap'=>'nowrap','flex_align_items'=>'center','flex_justify_content'=>'flex-start',
+        'width_mobile'=>$length(80,'%'),
+        'flex_direction'=>'row','flex_direction_tablet'=>'row','flex_direction_mobile'=>'column',
+        'flex_wrap'=>'nowrap','flex_align_items'=>'center','flex_align_items_mobile'=>'flex-start',
+        'flex_justify_content'=>'flex-start',
         'flex_gap'=>$gap(16),'padding'=>$edge(20,24,20,24),
         'padding_tablet'=>$edge(17,18,17,18),
         'padding_mobile'=>$edge(14,12,14,12),
@@ -172,7 +174,7 @@ foreach($steps as $i=>$step){
     $bind($cardSettings,'border_color','colors','via_stone');
     $card=$container('FIRE content card '.$number,'row',[$letterBadge,$divider,$words],$cardSettings);
     $row=$container('FIRE step '.$number.' row','row',[$rail,$card],[
-        'width'=>$length(100,'%'),'flex_gap'=>$gap(10),
+        'width'=>$length(100,'%'),'flex_gap'=>$gap(10),'flex_gap_mobile'=>$gap(8),
         'flex_wrap'=>'nowrap','flex_align_items'=>'stretch',
         'flex_justify_content'=>'flex-start'
     ]);
