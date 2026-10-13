@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.1.0');
+    wp_register_style('via-pathways-modern', false, [], '1.2.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -29,7 +29,7 @@ body.page-id-21 .elementor-element-000002c > .e-con-inner {
 /* Section eyebrow. */
 body.page-id-21 .elementor-element-0000016 p {
   color: #a9481d !important;
-  font-family: "Inter", sans-serif;
+  font-family: var(--e-global-typography-text-font-family, inherit);
   font-weight: 700;
   letter-spacing: .10em;
   text-transform: uppercase;
@@ -38,7 +38,7 @@ body.page-id-21 .elementor-element-0000016 p {
 }
 body.page-id-21 .elementor-element-0000017 .elementor-heading-title {
   color: var(--vpm-navy);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--e-global-typography-primary-font-family, inherit);
   font-size: clamp(35px, 3.4vw, 53px) !important;
   line-height: 1.06 !important;
   font-weight: 500;
@@ -49,7 +49,7 @@ body.page-id-21 .elementor-element-0000018 {
   margin-bottom: 26px;
 }
 body.page-id-21 .elementor-element-0000018 p {
-  font-family: "Inter", sans-serif;
+  font-family: var(--e-global-typography-text-font-family, inherit);
   color: var(--vpm-navy);
   font-size: clamp(15px, 1.12vw, 17px);
   line-height: 1.55;
@@ -102,7 +102,7 @@ body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.eleme
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--e-global-typography-primary-font-family, inherit);
   font-size: clamp(23px, 2vw, 31px) !important;
   font-weight: 600;
   line-height: 1.13;
@@ -119,18 +119,18 @@ body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.eleme
   border-radius: 50%;
   background: #fff3e9;
   color: var(--vpm-orange);
-  font: 700 14px/1 "Inter", sans-serif;
+  font: 700 14px/1 var(--e-global-typography-text-font-family, inherit);
   letter-spacing: .02em;
 }
 body.page-id-21 :is(.elementor-element-000001a,.elementor-element-0000020,.elementor-element-0000026) p {
-  font-family: "Inter", sans-serif;
+  font-family: var(--e-global-typography-text-font-family, inherit);
   color: var(--vpm-navy);
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 8px;
 }
 body.page-id-21 :is(.elementor-element-000001b,.elementor-element-0000021,.elementor-element-0000027) p {
-  font-family: "Inter", sans-serif;
+  font-family: var(--e-global-typography-text-font-family, inherit);
   color: var(--vpm-navy);
   line-height: 1.55;
   font-size: 15px;
@@ -162,7 +162,7 @@ body.page-id-21 :is(.elementor-element-000001d,.elementor-element-0000023,.eleme
   color: #b3481d !important;
   padding: 7px 0 !important;
   border-radius: 0 !important;
-  font: 700 13px/1.4 "Inter", sans-serif !important;
+  font: 700 13px/1.4 var(--e-global-typography-text-font-family, inherit) !important;
   text-transform: uppercase;
   letter-spacing: .035em;
 }
@@ -230,7 +230,7 @@ body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.eleme
 }
 body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
   color: #F1592D !important;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--e-global-typography-primary-font-family, inherit);
   font-size: clamp(35px, 3.4vw, 53px) !important;
   font-weight: 500;
   line-height: 1.06;
@@ -239,6 +239,29 @@ body.page-id-21 .elementor-element-0000017 { margin-bottom: -10px; }
 @media(max-width:767px) {
  body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) { height: 128px !important; min-height: 128px; }
 }
+
+/* v1.2: stacked two-colour heading, both still independent Elementor widgets. */
+body.page-id-21 .elementor-element-000002c {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+body.page-id-21 .elementor-element-0000017,
+body.page-id-21 .elementor-element-a71c9f2 {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+}
+body.page-id-21 .elementor-element-0000017 .elementor-heading-title,
+body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.04 !important;
+  font-family: var(--e-global-typography-primary-font-family, inherit) !important;
+}
+body.page-id-21 .elementor-element-a71c9f2 { margin-bottom: 12px !important; }
 
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
