@@ -60,3 +60,22 @@ The UAE styles may require `via-shared-template-assets.php` to enqueue Elementor
 ## Rollback
 
 Apply script prints a dated JSON snapshot. Verify its name, then dry-run `wp-cli/rollback-shared-layout.php` with the full absolute backup path, and apply only if the restore report matches page and template IDs. The rollback restores only modified Elementor data/layout/conditions/status, not unrelated WordPress settings.
+
+
+## cPanel upload convention (confirmed 2026-10-13)
+
+The user uploads downloaded VIA PHP scripts through cPanel File Manager to the **private account home directory** `/home/amitaxon/`. This is the default upload location for future requests; scripts should not be assumed to live under `/tmp`, `public_html`, or a Git clone.
+
+Before re-downloading a script, use its original filename in `/home/amitaxon/`:
+```bash
+WP=/home/amitaxon/public_html
+SCRIPT=/home/amitaxon/create-inner-pages-hero-template.php
+test "$(runuser -u amitaxon -- wp --path="$WP" option get siteurl)" = "https://axonserver.com"
+test "$(runuser -u amitaxon -- wp --path="$WP" option get elementor_active_kit)" = "19"
+test -s "$SCRIPT"
+stat -c '%U:%G %a %s bytes %n' "$SCRIPT"
+php -l "$SCRIPT"
+runuser -u amitaxon -- wp --path="$WP" eval-file "$SCRIPT" dry-run
+```
+
+Always use **the script's exact actual filename**, not one from an unrelated example. Run `apply` only after the dry run passes and the user approves the change. Upload progress reaching 100% proves transfer, **not** that contents or version match a GitHub commit; validate before using. Preserve private backups outside the website root. If GitHub changes after the user's upload, do not silently replace their uploaded script—inform them and verify the new revision explicitly.
