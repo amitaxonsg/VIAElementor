@@ -83,19 +83,19 @@ Always use **the script's exact actual filename**, not one from an unrelated exa
 
 ## NEW: After-templates full-site backup procedure — 2026-10-13 (pending execution)
 
-The user explicitly requested a **new recovery snapshot of everything as the website stands now**, after Saved Templates and the restored branding. The earlier verified \`VIA-FULL-20261013-120355\` is still preserved but predates newer templates. **No new backup has been verified yet.**
+The user explicitly requested a **new recovery snapshot of everything as the website stands now**, after Saved Templates and the restored branding. The earlier verified `VIA-FULL-20261013-120355` is still preserved but predates newer templates. **No new backup has been verified yet.**
 
 The tested existing server-local backup creator is:
 
-\`\`\`text
+```text
 /home/amitaxon/via-fullsite-deployment/backup-via-wordpress.sh
-\`\`\`
+```
 
-It exports the account's WordPress database and archives \`/home/amitaxon/public_html\`, storing copies and SHA-256 checksums in private timestamped directories below \`/home/amitaxon/via-fullsite-deployment/backups/full-site/\`.
+It exports the account's WordPress database and archives `/home/amitaxon/public_html`, storing copies and SHA-256 checksums in private timestamped directories below `/home/amitaxon/via-fullsite-deployment/backups/full-site/`.
 
 ### SSH: launch in background (survives SSH disconnection)
 
-\`\`\`bash
+```bash
 set -euo pipefail
 WP=/home/amitaxon/public_html
 BASE=/home/amitaxon/via-fullsite-deployment
@@ -123,13 +123,13 @@ echo "LOG: $LOG"
 echo "PID: $(cat "$PID")"
 sleep 3
 tail -n 20 "$LOG"
-\`\`\`
+```
 
 Do not edit/publish Elementor during the backup window. **Do not launch another backup if an existing one is still running.**
 
 ### SSH: monitor and verify completion
 
-\`\`\`bash
+```bash
 set -euo pipefail
 OUT=/home/amitaxon/via-fullsite-deployment/backups/full-site
 LOG=$(find "$OUT" -maxdepth 1 -type f -name 'backup-*.log' -printf '%f\n' | sort | tail -1)
@@ -150,6 +150,6 @@ test -s "$DEST/SHA256SUMS.txt"
 (cd "$DEST"; sha256sum -c SHA256SUMS.txt; gzip -t wordpress-files.tar.gz)
 du -sh "$DEST"
 echo "NEW BACKUP VERIFIED: $DEST"
-\`\`\`
+```
 
 Record the **actual new snapshot directory** and its successful checksum output in GitHub *after* running these commands. Do not store archives, SQL dumps or access secrets in the public repository. Keep an encrypted copy off-server for disaster recovery. Checkums do not substitute for a test restore on a staging site.
