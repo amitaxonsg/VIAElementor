@@ -60,7 +60,7 @@ A private full WordPress files + database snapshot was completed on the developm
 
 ## Reusable homepage Flexbox templates (candidate)
 
-Four new **native Elementor Free Container-template builders** are documented in [Homepage Template Library](docs/HOMEPAGE-TEMPLATE-LIBRARY.md), with guarded dry-run/apply code in [build-homepage-templates.php](wp-cli/build-homepage-templates.php). They clone the latest approved Pathways, FIRE, Client Voices and Start a Conversation sections from WordPress page 21 into **separate library templates**, without modifying the live homepage. The existing Sylvia counter Flexbox template remains in place. **Not yet deployed or visually verified.** No private page exports are committed.
+Four new **native Elementor Free Container-template builders** are documented in [Homepage Template Library](docs/HOMEPAGE-TEMPLATE-LIBRARY.md), with guarded dry-run/apply code in [build-homepage-templates.php](wp-cli/build-homepage-templates.php). They clone the latest approved Pathways, FIRE, Client Voices and Start a Conversation sections from WordPress page 21 into **separate library templates**, without modifying the live homepage. The existing Sylvia counter Flexbox template remains in place. **The user subsequently confirmed creating templates 196–199 and 218, with previews.** This repository's original builder code does not necessarily include later Elementor edits saved directly in WordPress. No private page exports are committed.
 
 
 ## Inner-page hero template and shared spacing rule
