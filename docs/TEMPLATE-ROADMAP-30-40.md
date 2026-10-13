@@ -64,7 +64,7 @@ These names are planning handles, not permission to publish unreviewed content. 
 - User has **confirmed creation** of the six Saved Templates with IDs listed above, and has shown previews. This is not proof every modern slider/tab works at all breakpoints.
 - `Inner Pages Hero Template` inserted copies require an individually updated background, breadcrumb, title, text, CTA.
 - User last confirmed a restored homepage styling baseline after Kit 19 CSS regeneration; protect it from future template work.
-- Most recent **verified historical backup** is `VIA-FULL-20261013-120355` (integrity OK). New after-template snapshot is **pending user SSH execution and confirmation**. Documentation must not label it complete before seeing the actual backup log and SHA-256 results.
+- Latest verified full-site recovery point is now `VIA-FULL-20261013-140913` (~108 MB); user SSH output confirms the files, database and checksums were verified. The earlier `VIA-FULL-20261013-120355` remains an older verified checkpoint. Fresh per-batch backups remain advisable before mass insertion.
 
 ## Source of truth / rollback
 
