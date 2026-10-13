@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.4.0');
+    wp_register_style('via-pathways-modern', false, [], '1.5.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -306,6 +306,54 @@ body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017, .elem
  body.page-id-21 .elementor-element-000002c { display:flex !important; flex-direction:column !important; }
  body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title { font-size:36px !important; white-space:normal; }
 }
+
+/* v1.5 correction: Elementor flex parent, not grid. */
+@media (min-width: 768px) {
+ body.page-id-21 .elementor-element-000002c {
+   display: flex !important;
+   flex-direction: row !important;
+   flex-wrap: wrap !important;
+   align-content: flex-start !important;
+   align-items: baseline !important;
+   justify-content: flex-start !important;
+   column-gap: 12px !important;
+   row-gap: 0 !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-0000016 {
+   order: 0 !important;
+   flex: 0 0 100% !important;
+   width: 100% !important;
+   max-width: 100% !important;
+ }
+ body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017, .elementor-element-a71c9f2) {
+   order: 1 !important;
+   display: block !important;
+   flex: 0 0 auto !important;
+   width: auto !important;
+   max-width: none !important;
+   min-width: 0 !important;
+   align-self: baseline !important;
+   margin: 0 !important;
+   padding: 0 !important;
+ }
+ body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017, .elementor-element-a71c9f2) .elementor-heading-title {
+   font-size: 36px !important;
+   white-space: nowrap !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-0000018 {
+   order: 2 !important;
+   flex: 0 0 100% !important;
+   width: 100% !important;
+   max-width: 520px !important;
+   margin: 14px 0 28px !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-000002b {
+   order: 3 !important;
+   flex: 0 0 100% !important;
+   width: 100% !important;
+ }
+}
+/* Small screens may wrap the heading to protect the layout. */
 
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
