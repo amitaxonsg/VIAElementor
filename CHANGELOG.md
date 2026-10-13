@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Client Voices Carousel v3 candidate
+
+- Revised the testimonial concept to one-at-a-time automatic slides with explicit Pause/Play, arrows, dynamic dots for duplicated slides, mobile swipe, keyboard and reduced-motion support.
+- Prepared new **create-only** `homepage-05-Client-Voices-Carousel-v3` installer to clone real existing testimonials from Saved Template ID 198, preserving editable quote/name/attribution Elementor widgets.
+- Local PHP syntax, embedded JavaScript syntax and mocked read-only WP-CLI dry-run passed. **Server dry run / Saved Template creation / mobile visual approval have not yet been confirmed.** PHP implementation remains private pending SSH-first approval; [GitHub guide](docs/CLIENT-VOICES-CAROUSEL-V3.md).
+- Earlier 3-visible-card hover-only direction and v2 slider are superseded, retained only as historical proposals.
+
 ## 2026-10-13 — FIRE timeline template candidate
 
 - Added `wp-cli/create-via-fire-timeline-template.php` for new `inner-20-FIRE-Timeline`, a separate native Elementor Free vertical numbered FIRE-process template matching the approved four-row concept.
