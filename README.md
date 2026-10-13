@@ -94,3 +94,8 @@ A new *non-destructive* Elementor Free timeline design, **`inner-20-FIRE-Timelin
 ## Pathways Image Cards v2 (candidate)
 
 The selected Pathways redesign (three **top-image** cards with editable icon, title, tagline, original text and CTAs) is documented in [Pathways Image Cards v2](docs/PATHWAYS-IMAGE-CARDS-V2.md). A new `homepage-03-Pathways-Image-Cards-v2` Saved Container is proposed, without overwriting the existing `homepage-03-Pathways` template or any live page. The code/assets are supplied privately to the administrator for server dry-run and visual approval before the final implementation commit; image crops are not stored on public GitHub. Uses Site Kit 19 Global Styles and Sylvia 178 outer padding.
+
+
+## Client Voices one-at-a-time slider (SSH candidate)
+
+A new separate Elementor Free Saved Template proposal, `homepage-05-Client-Voices-Slider-v2`, is documented at [Client Voices Slider v2](docs/CLIENT-VOICES-SLIDER-V2.md). It will clone actual approved quote/author widgets from existing Template **198**, keeping their editing controls intact, and show one quote at a time with 7-second autoplay, arrows, dots and mobile swipe. One template-scoped HTML widget provides the animation (no Pro or extra plugin), with Global Kit 19 styles, outer spacing from Sylvia 178, reduced-motion support and zero global CSS flush. **PHP is prepared for cPanel upload, but not yet committed or deployed** under our SSH-test-first source policy. Live homepage, Header 57/Footer 58 and existing Template 198 remain unchanged.
