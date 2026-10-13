@@ -78,7 +78,7 @@ The project has **six user-confirmed Saved Templates** (`Sylvia counter Flexbox`
 
 [Plan for about 36 Saved Container templates](docs/TEMPLATE-ROADMAP-30-40.md) — six existing plus 30 proposed concepts, built in staged groups with the Sylvia template as the outer width/padding reference. This is a **plan, not an assertion the remaining templates have been created**.
 
-**A fresh private server backup is pending:** the earlier verified `VIA-FULL-20261013-120355` snapshot predates several changes. Run the [detached full-site backup procedure](docs/OPERATIONS.md) before the next large template batch. Never commit SQL archives or private recovery files to GitHub.
+**Latest verified private server backup:** `VIA-FULL-20261013-140913` (~108 MB), WordPress database and file archive checksums verified by the user's SSH output. It is a newer checkpoint than `VIA-FULL-20261013-120355` and includes the server's state at 14:09:13 (+08:00). See [Recovery and snapshots](docs/BACKUP-RECOVERY-20261013.md). Do not upload SQL archives, configuration, or private recovery files to GitHub; an off-server copy and test restore are still recommended.
 
 
 ## Ten common responsive Elementor templates (candidate)
