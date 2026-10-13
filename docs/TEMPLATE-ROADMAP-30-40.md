@@ -74,3 +74,23 @@ These names are planning handles, not permission to publish unreviewed content. 
 [Inner Pages Hero usage](INNER-PAGES-HERO-TEMPLATE.md)
 
 Do not commit exported WordPress DB, private site archives, configuration secrets or bulk client content to the public GitHub repository.
+
+
+## 2026-10-13 — New batch of ten standard templates (code committed, installation pending)
+
+The new [Ten Common Template Generator](../wp-cli/create-ten-common-templates.php) contains these **ten** new Saved Container candidates, not yet confirmed created:
+
+1. `inner-10-FAQ-Accordion`
+2. `inner-11-Two-Column-Editorial`
+3. `inner-12-Three-Column-Highlights`
+4. `inner-13-Interactive-Flip-Boxes`
+5. `inner-14-Track-Record-Circles`
+6. `inner-15-Profile-Biography`
+7. `inner-16-Services-Overview`
+8. `inner-17-Coaching-Journey`
+9. `inner-18-Classes-Programs`
+10. `inner-19-Contact-Enquiry`
+
+**Count and overlap policy:** The 6 earlier Saved Templates remain confirmed. After this new batch is *actually imported and approved*, the library would contain **16 counted section templates**, plus any independently confirmed Footer CTA or other templates; the aspirational 36-template plan would have roughly 20 more to build. The earlier roadmap's `inner-02`–`inner-09` ideas overlap in function with some of these new titles. **Do not produce duplicates just to satisfy a numeric target.** Reconcile the final backlog against the actual WordPress Saved Template list before further batches.
+
+[Template details, editing notes and QA](TEN-COMMON-ELEMENTOR-TEMPLATES.md). The current project CSS/Kit 19 freeze applies to every new candidate. Do not insert sample text/metrics/images onto published pages without approval.
