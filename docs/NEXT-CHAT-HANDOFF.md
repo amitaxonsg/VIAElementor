@@ -85,3 +85,13 @@ runuser -u amitaxon -- wp --path="$WP" elementor flush-css
 ## October 13 follow-up — Pathways heading layout recovery
 
 **Read first:** [Pathways recovery and standards](PATHWAYS-RECOVERY-20261013.md). The user's latest screenshot shows an incorrect left-shift/large whitespace after v1.4/v1.5 parent-level CSS layout experiments. The v1.5 rollback restored v1.4 and therefore did not remove all problematic rules. **GitHub v1.6** (`5634ef80f26bdcebb4c709bfd051a34b40235d36`) is now a clean CSS baseline built from the previously working card design, with 12px small heading, 36px main headings and NO hardcoded font-family names. It has **not** been confirmed deployed yet. Preserve the existing heading split (IDs `0000017`, `a71c9f2`) and do not keep layering grid/flex fixes onto Pathways container `000002c`. Future one-line heading should be created with a native nested Elementor heading row after validating the layout. See recovery document for exact IDs/backups.
+
+
+## October 13 reference-copy update (not yet deployed)
+
+The user supplied a reference screenshot with the Pathways copy: "**Three paths. One approach.**", Individuals describing "eradicate negativity", Corporate subtitle "Adopt intuitive leadership." and shorter description, Coaches subtitle "Build your practice." and certification statement "Get certified by the Society of NLP, Orlando, USA." The screenshot remains an approved content reference, but the certification claim should be verified with the client.
+
+- Committed guarded copy-only WP-CLI script `wp-cli/update-pathways-reference-copy.php`, commit `19233cbdd8521833291b8d90b1974692ab1f3e03`. Requires Site Kit 19, page 21, exact Pathways structure and known source wording. Dry-run first. Creates private Elementor JSON backup on apply. **Not yet confirmed deployed.**
+- The user confirms the clean **v1.6** Pathways card layout is visually good. Do not overwrite its installed stylesheet with experimental v1.4/v1.5 rules. A later repository-only v1.7 stylesheet commit (`fbbe35d6f7e4954bb45ef8b6767059d68739fecc`) references a new heading row `b7621a0` that has **not** been created in Elementor; do not deploy that stylesheet alone.
+- Existing split heading widgets are `0000017` (Three paths.) and `a71c9f2` (One approach. after copy script). Their independently editable colours must remain. The requested same-line native Elementor row is still pending; do not force the full Pathways parent into grid/flex again.
+- Small eyebrow 12px; large section heading 36px; card heading desired 25px. All font families inherited from Elementor globals. Preserve images and CTA links.
