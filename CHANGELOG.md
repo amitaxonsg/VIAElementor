@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13 — Verified server-local recovery checkpoint
+
+- Documented successful private backup `VIA-FULL-20261013-120355` (approximately 106 MB) with both SQL and WordPress file archive SHA-256 checks reported OK.
+- Added [recovery checkpoint manifest and safe verification notes](docs/BACKUP-RECOVERY-20261013.md). The archive, SQL database, credentials and any sensitive data **were not** uploaded to GitHub. A full restore test is still pending.
+
 ## 2026-10-13 — Latest photographic homepage hero and handoff
 
 - Added native Elementor hero tools for the approved photo background with headline/buttons on the left and **one lower Sylvia/credential/animated-statistics strip**. The previous card layouts were rejected.
