@@ -1,6 +1,6 @@
 # NEXT CHAT HANDOFF — VIA Frontiers Elementor development
 
-**Updated:** 2026-10-13
+**Updated:** 2026-10-13 — current template/styling freeze and pending after-template backup. Read the latest status section at the bottom; older subsections preserve project history.
 
 Use this document first when continuing the project in another chat. Project GitHub: [amitaxonsg/VIAElementor](https://github.com/amitaxonsg/VIAElementor).
 
