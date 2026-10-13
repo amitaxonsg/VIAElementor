@@ -138,3 +138,16 @@ For future pages, use **Sylvia counter Flexbox outer width/padding as a common d
 For all future SSH instructions, use the already-uploaded **exact** script path from `/home/amitaxon/`. Check `test -s`, `stat`/`ls -l`, `php -l`, website+Site Kit safeguards, and WP-CLI `dry-run` as `amitaxon` first. Only then propose `apply`, with user approval as appropriate. Do not default to `/tmp` or force an extra GitHub download. If a newer GitHub revision is necessary, clearly warn that the manually uploaded copy may be older and obtain/verify the correct version first.
 
 Keep PHP source, server backups and all work account-scoped. The cPanel upload location is NOT the WordPress plugin folder nor a public website URL. Avoid exposing private backups under `public_html`.
+
+
+## LATEST: User-approved styling freeze and 36-template project (2026-10-13)
+
+**Priority / latest status — supersedes earlier “pending import” handoff paragraphs:** User created and tested the saved Container templates, and after correcting generated CSS **explicitly confirmed VIA homepage colours/layout are now fine**. We must freeze that baseline and proceed carefully with ~30–40 total templates.
+
+- Read first: [Approved Working Baseline & Do Not Touch](APPROVED-WORKING-BASELINE-20261013.md), then [Template Roadmap](TEMPLATE-ROADMAP-30-40.md), then [Backup Recovery](BACKUP-RECOVERY-20261013.md). The baseline includes current live Elementor IDs, screenshots/SSH-verified settings, saved-template IDs, Kit 19, missing/restored `post-19.css`, and forbidden legacy patches.
+- User's last confirmed Saved Template list: `178 Sylvia counter Flexbox`, `196 homepage-03-Pathways`, `197 homepage-04-FIRE-Approach`, `198 homepage-05-Client-Voices`, `199 homepage-06-Start-a-Conversation`, `218 Inner Pages Hero Template`. `183 mainpage` also exists; `19 Default Kit` is the global kit, not a section template.
+- The “30–40” target is planned as **36** (six existing, thirty proposed); names are planning placeholders until content/source checks. Build in 4–6-template batches, only saved templates first; no blind live-page edits.
+- **Do NOT touch**: Kit 19 Global Colours/Fonts, global typography, live Homepage 21, Header 57, Footer 58, Typography Studio's saved rules, and currently working CTA/hero styling, unless a scoped explicitly approved change demands it.
+- CSS outage: Kit 19 generated `post-19.css` had been missing and later was regenerated with approved values; HTML linked it and `post-21.css`. User confirmed restored colours. Root cause beyond regenerated CSS remains unproven. Do not reflexively flush CSS or edit the generated files.
+- **Existing verified full backup** `VIA-FULL-20261013-120355` is private, with both hashes OK, but it is older than recent saved templates. **The requested new full backup has NOT yet been run or verified in this chat.** Provide detached SSH instructions for the existing `/home/amitaxon/via-fullsite-deployment/backup-via-wordpress.sh`, wait for actual completion + SHA-256 verification, then record exact new timestamp; never claim a backup happened based solely on GitHub docs.
+- Confirmed cPanel upload location for all PHP scripts is `/home/amitaxon/`. SSH test/dry-run as `amitaxon` using the existing file; only GitHub after visual approval for further design modifications.
