@@ -17,7 +17,7 @@
 | Inner pages | `22–49` |
 | WordPress primary navigation | Menu `3` |
 | Typography Studio | v1.3.1 reported working; **24 saved rules** at last inspection; do not bulk-reset |
-| Last verified private full-site snapshot | `VIA-FULL-20261013-120355`; completed, checksums OK, but predates later template work |
+| Latest verified private full-site snapshot | `VIA-FULL-20261013-140913`; completed at 14:09 (+08:00), ~108 MB, database/files/checksums verified by supplied SSH output |
 
 ### Brand settings: preserve existing Elementor Globals
 
