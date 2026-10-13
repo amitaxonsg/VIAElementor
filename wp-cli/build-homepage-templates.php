@@ -265,7 +265,7 @@ $sectionBase($fire,'homepage-04-FIRE-Approach','via_white');
 // 3 — Client Voices: preserve all real quotations, authors and attributions.
 $voices=$top('000004c','05 Testimonials');
 $expectChildren($voices,['0000040','0000041','000004b'],'Client Voices');
-[$voiceLabel,$voiceHeading,$voiceGrid]=$voices;
+[$voiceLabel,$voiceHeading,$voiceGrid]=$voices['elements'];
 if (count($voiceGrid['elements']??[])!==3)WP_CLI::error('Expected exactly three testimonial cards');
 $font($voiceLabel['settings'],'text',12);
 $font($voiceHeading['settings'],'primary',36);
