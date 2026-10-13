@@ -72,3 +72,25 @@ The script is **idempotency-guarded**: it refuses to overwrite any existing Save
 [Homepage Template Library](HOMEPAGE-TEMPLATE-LIBRARY.md)  
 [Approved 70vh Homepage Hero](APPROVED-HERO-FOOTER-WIDTH-20261013.md)  
 [2026-10-13 Recovery Checkpoint](BACKUP-RECOVERY-20261013.md)
+
+
+## Already-uploaded cPanel copy (2026-10-13)
+
+The user confirmed a successful 100% upload via cPanel to:
+`/home/amitaxon/create-inner-pages-hero-template.php`.
+
+**Default next step: use this file directly**; do not re-download it unless it differs from an intended new GitHub revision. Upload progress is not proof of syntax validation or deployment.
+
+```bash
+set -e
+WP=/home/amitaxon/public_html
+SCRIPT=/home/amitaxon/create-inner-pages-hero-template.php
+test "$(runuser -u amitaxon -- wp --path="$WP" option get siteurl)" = "https://axonserver.com"
+test "$(runuser -u amitaxon -- wp --path="$WP" option get elementor_active_kit)" = "19"
+test -s "$SCRIPT"
+ls -lh "$SCRIPT"
+php -l "$SCRIPT"
+runuser -u amitaxon -- wp --path="$WP" eval-file "$SCRIPT" dry-run
+```
+
+Only after a passing dry run should the user run `wp eval-file "$SCRIPT" apply` (as `amitaxon`). The existing GitHub download example above is a **fallback** for a missing or outdated file, not the normal route.
