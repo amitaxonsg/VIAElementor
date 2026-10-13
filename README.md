@@ -61,3 +61,10 @@ A private full WordPress files + database snapshot was completed on the developm
 ## Reusable homepage Flexbox templates (candidate)
 
 Four new **native Elementor Free Container-template builders** are documented in [Homepage Template Library](docs/HOMEPAGE-TEMPLATE-LIBRARY.md), with guarded dry-run/apply code in [build-homepage-templates.php](wp-cli/build-homepage-templates.php). They clone the latest approved Pathways, FIRE, Client Voices and Start a Conversation sections from WordPress page 21 into **separate library templates**, without modifying the live homepage. The existing Sylvia counter Flexbox template remains in place. **Not yet deployed or visually verified.** No private page exports are committed.
+
+
+## Inner-page hero template and shared spacing rule
+
+- [Inner Pages Hero Template](docs/INNER-PAGES-HERO-TEMPLATE.md) is a proposed **full-width native Elementor Free** hero for pages 22–49: editable background photograph, breadcrumb, H1 title, introduction, CTA button and optional description. Minimum desktop height 35vh (about half the approved 70vh homepage hero); tablet/mobile content can expand. Its outer padding is read from `Sylvia counter Flexbox`. [Guarded creation script](wp-cli/create-inner-pages-hero-template.php) is **committed but not yet confirmed imported/tested** on WordPress.
+- **All future Saved Container templates** should follow the approved Sylvia outer width/padding reference. The [opt-in generic spacing updater](wp-cli/via-template-sync-sylvia-spacing.php) accepts exact Saved Template titles and supports dry-run, backup, apply and rollback. Do not apply it to all templates blindly, or to live pages. A separate [four-homepage-template updater](wp-cli/via-template-match-sylvia-spacing.php) is preserved for the previously approved four-template batch.
+- Keep title/copy/buttons editable in Elementor; Elementor Free saved templates insert independent copies and do not automatically update previous page insertions.
