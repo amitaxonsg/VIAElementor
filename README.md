@@ -68,3 +68,14 @@ Four new **native Elementor Free Container-template builders** are documented in
 - [Inner Pages Hero Template](docs/INNER-PAGES-HERO-TEMPLATE.md) is a proposed **full-width native Elementor Free** hero for pages 22–49: editable background photograph, breadcrumb, H1 title, introduction, CTA button and optional description. Minimum desktop height 35vh (about half the approved 70vh homepage hero); tablet/mobile content can expand. Its outer padding is read from `Sylvia counter Flexbox`. [Guarded creation script](wp-cli/create-inner-pages-hero-template.php) is **committed but not yet confirmed imported/tested** on WordPress.
 - **All future Saved Container templates** should follow the approved Sylvia outer width/padding reference. The [opt-in generic spacing updater](wp-cli/via-template-sync-sylvia-spacing.php) accepts exact Saved Template titles and supports dry-run, backup, apply and rollback. Do not apply it to all templates blindly, or to live pages. A separate [four-homepage-template updater](wp-cli/via-template-match-sylvia-spacing.php) is preserved for the previously approved four-template batch.
 - Keep title/copy/buttons editable in Elementor; Elementor Free saved templates insert independent copies and do not automatically update previous page insertions.
+
+
+## Current approved working baseline (2026-10-13)
+
+**The user confirmed the homepage branding is working again** after Elementor Global Kit 19 CSS was regenerated. The approved design must remain unchanged during the next 30–40 reusable template builds. Read the [Frozen Working Baseline & Do-Not-Touch Rules](docs/APPROVED-WORKING-BASELINE-20261013.md) before changing any page/section CSS, Kit colours, Header 57, Footer 58 or page 21.
+
+The project has **six user-confirmed Saved Templates** (`Sylvia counter Flexbox` ID 178, homepage section templates IDs 196–199, and `Inner Pages Hero Template` ID 218), plus an existing `mainpage` library entry ID 183. Older “not yet imported” notes in historical sections of this repository refer to an earlier stage; the latest approved baseline supersedes them.
+
+[Plan for about 36 Saved Container templates](docs/TEMPLATE-ROADMAP-30-40.md) — six existing plus 30 proposed concepts, built in staged groups with the Sylvia template as the outer width/padding reference. This is a **plan, not an assertion the remaining templates have been created**.
+
+**A fresh private server backup is pending:** the earlier verified `VIA-FULL-20261013-120355` snapshot predates several changes. Run the [detached full-site backup procedure](docs/OPERATIONS.md) before the next large template batch. Never commit SQL archives or private recovery files to GitHub.
