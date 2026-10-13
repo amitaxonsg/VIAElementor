@@ -80,3 +80,11 @@ Preview **the new Carousel v3 Saved Template** in Elementor and test its fronten
 **GitHub source policy:** commit the exact tested PHP implementation only **after the user's SSH run and visual confirmation**, per the project workflow. This documentation is a candidate spec and does not assert the new template is installed.
 
 [Approved project baseline](APPROVED-WORKING-BASELINE-20261013.md) · [Brand Guide](BRAND-GUIDE.md) · [Previously superseded three-card hover proposal](CLIENT-VOICES-THREE-CARD-HOVER.md)
+
+## 2026-10-13 — Short legitimate testimonial guard correction (pending server test)
+
+First on-server dry run of `create-via-client-voices-carousel-v3.php` **stopped safely** after identifying Marc Hoo and Rebecca Osmond; the third author, Antoinette Biehlmeier, was rejected because the initial importer imposed a **75-character minimum** on the combined source text. Her actual approved testimonial is short, so length is not a valid integrity criterion. **No template was created by this failed dry run.**
+
+A corrected standalone source file `create-via-client-voices-carousel-v3-short-quote-fix.php` has been provided to the user for cPanel upload to `/home/amitaxon/`. The change is **only** the source verification guard: it verifies each of the three known author names and a distinctive phrase from each existing source quotation. It does not alter quote text, Elementor card data, slide animation or any WordPress record. PHP lint, embedded JavaScript syntax and an isolated short-quote guard test passed locally.
+
+Next action: upload the corrected PHP file, **run only its `dry-run`**, and share its full output before `apply`. If a different structure/phrase check fails, stop and inspect actual source widget text read-only; do not weaken checks further blindly. The implementation code should be committed to GitHub only once the corrected importer passes server testing and the new Saved Template is visually approved.
