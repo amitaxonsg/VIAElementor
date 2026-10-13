@@ -41,7 +41,7 @@ All names begin with `inner-` in accordance with the project's template naming r
 
 ## SSH: Pull pinned reviewed source and dry-run
 
-**First** make sure a new complete private backup of the site has completed and both SHA-256 checks are OK. The earlier verified `VIA-FULL-20261013-120355` predates more recent library edits; the latest snapshot was said to be done, but **its exact name and hash results have not yet been shown in this conversation**.
+**Latest verified private recovery point:** `VIA-FULL-20261013-140913` (~108 MB). User SSH output confirms the backup completed and its database, files and checksums were verified. This is the preferred checkpoint ahead of the previously verified `VIA-FULL-20261013-120355`. Confirm the backup still exists and no backup process is running before applying the ten-template batch; a full staging restore has not been tested.
 
 ```bash
 set -e
