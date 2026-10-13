@@ -81,9 +81,9 @@ runuser -u amitaxon -- wp --path="$WP" eval-file "$SCRIPT" dry-run
 Always use **the script's exact actual filename**, not one from an unrelated example. Run `apply` only after the dry run passes and the user approves the change. Upload progress reaching 100% proves transfer, **not** that contents or version match a GitHub commit; validate before using. Preserve private backups outside the website root. If GitHub changes after the user's upload, do not silently replace their uploaded script—inform them and verify the new revision explicitly.
 
 
-## NEW: After-templates full-site backup procedure — 2026-10-13 (pending execution)
+## After-template full-site backup procedure — 2026-10-13 (executed and verified)
 
-The user explicitly requested a **new recovery snapshot of everything as the website stands now**, after Saved Templates and the restored branding. The earlier verified `VIA-FULL-20261013-120355` is still preserved but predates newer templates. **No new backup has been verified yet.**
+The user supplied terminal output confirming the new snapshot **`VIA-FULL-20261013-140913`** completed (~108 MB) at `/home/amitaxon/via-fullsite-deployment/backups/full-site/VIA-FULL-20261013-140913`, with database, files and checksums verified. This supersedes earlier pending-backup language; `VIA-FULL-20261013-120355` remains an older verified snapshot. Retain the following instructions for the next fresh backup. No off-server copy or test restore has been verified.
 
 The tested existing server-local backup creator is:
 
