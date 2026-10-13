@@ -328,20 +328,33 @@ $colSettings=[
     'button'      => ['name'=>'CTA existing button column','width'=>20],
 ];
 $seen=[];
-foreach($cta['elements'] as &$column){
-    if (($column['elType']??'')!=='container')
-        WP_CLI::error('Consultation child is not a native Elementor container');
-    $typesInColumn=$directClassify($column);
+$wrappedChildren=[];
+foreach($cta['elements'] as $child){
+    // Current source may mix direct Widgets and native Containers.
+    // The source remains unchanged; only the independent saved-template
+    // COPY gets a native wrapper when its child is a direct Widget.
+    $typesInColumn=$directClassify($child);
     if (count($typesInColumn)!==1 || !isset($colSettings[$typesInColumn[0]]))
-        WP_CLI::error('Unexpected Consultation child widgets: '.wp_json_encode($typesInColumn));
+        WP_CLI::error('Unexpected Consultation child '.($child['id']??'?').
+            ' ('.($child['elType']??'?').') widgets: '.wp_json_encode($typesInColumn));
     $kind=$typesInColumn[0];
     if (isset($seen[$kind]))WP_CLI::error('Duplicate Consultation column: '.$kind);
     $seen[$kind]=true;
-    $column['settings']['_title']=$colSettings[$kind]['name'];
+    if (($child['elType']??'')==='widget') {
+        // No typography, text, media or CTA settings are modified.
+        $column=$newContainer($colSettings[$kind]['name'],[$child]);
+    } elseif (($child['elType']??'')==='container') {
+        $column=$child; // Preserve its entire nested Elementor hierarchy.
+        $column['settings']['_title']=$colSettings[$kind]['name'];
+    } else {
+        WP_CLI::error('Unsupported Consultation child type: '.($child['elType']??'?'));
+    }
     $setWidth($column['settings'],$colSettings[$kind]['width'],100,100);
+    $wrappedChildren[]=$column;
 }
-unset($column);
-if (count($seen)!==3)WP_CLI::error('Consultation columns incomplete');
+if (count($seen)!==3 || count($wrappedChildren)!==3)
+    WP_CLI::error('Consultation columns incomplete');
+$cta['elements']=$wrappedChildren;
 // Change only the cloned SECTION'S native responsive Flexbox controls.
 // All nested widgets, original text, links, accents and existing layout are
 // copied from current Elementor, NOT constructed from legacy GitHub content.
