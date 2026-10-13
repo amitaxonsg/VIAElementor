@@ -1,4 +1,6 @@
-# VIA Frontiers — Client Voices: three visible cards, gentle floating hover
+# VIA Frontiers — Three-card hover (previous option; now superseded by Carousel v3)
+
+**Latest user decision:** On 2026-10-13 the user requested a one-at-a-time animated testimonial carousel with **Pause/Play** and editable additional slides. This **supersedes** the three-card hover proposal. Do not deploy the hover updater for this request; see [Client Voices Carousel v3](CLIENT-VOICES-CAROUSEL-V3.md). The remainder is historical documentation.
 
 **Latest request (2026-10-13):** Keep **all three testimonial boxes visible**. Add only a subtle desktop hover lift/shadow. **No carousel, autoplay, arrows, or dots.** This decision **supersedes** [Client Voices Slider v2](CLIENT-VOICES-SLIDER-V2.md). **Do NOT deploy** the old `create-via-testimonial-slider-v2.php` script.
 
