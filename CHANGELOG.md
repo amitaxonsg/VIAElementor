@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13 — Reusable inner-page hero and template spacing standard
+
+- Added `wp-cli/create-inner-pages-hero-template.php` to create a separate full-width, 35vh desktop native Elementor Container template named **Inner Pages Hero Template**, with editable background, breadcrumb, heading, intro, button and optional copy, following Sylvia's outer padding and Site Kit 19 Global Styles.
+- Added `docs/INNER-PAGES-HERO-TEMPLATE.md` documenting manual per-page insertion, page-specific image/breadcrumb editing, mobile layout and safe dry-run/apply procedure. **The new template has not yet been created or visually verified on the WordPress server.**
+- Tracked the existing four-homepage-template Sylvia spacing tool and prepared an opt-in generic saved-template spacing updater for future VIA pages. Neither script changes live page content automatically; server-side testing pending.
+
 ## 2026-10-13 — Four modular homepage templates prepared for testing
 
 - Added guarded Elementor Free saved-Container builder for Pathways, FIRE Approach, Client Voices, and Start a Conversation, using existing page 21 content instead of recreating copy or assets.
