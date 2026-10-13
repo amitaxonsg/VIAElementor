@@ -79,3 +79,77 @@ runuser -u amitaxon -- wp --path="$WP" eval-file "$SCRIPT" dry-run
 ```
 
 Always use **the script's exact actual filename**, not one from an unrelated example. Run `apply` only after the dry run passes and the user approves the change. Upload progress reaching 100% proves transfer, **not** that contents or version match a GitHub commit; validate before using. Preserve private backups outside the website root. If GitHub changes after the user's upload, do not silently replace their uploaded script—inform them and verify the new revision explicitly.
+
+
+## NEW: After-templates full-site backup procedure — 2026-10-13 (pending execution)
+
+The user explicitly requested a **new recovery snapshot of everything as the website stands now**, after Saved Templates and the restored branding. The earlier verified \`VIA-FULL-20261013-120355\` is still preserved but predates newer templates. **No new backup has been verified yet.**
+
+The tested existing server-local backup creator is:
+
+\`\`\`text
+/home/amitaxon/via-fullsite-deployment/backup-via-wordpress.sh
+\`\`\`
+
+It exports the account's WordPress database and archives \`/home/amitaxon/public_html\`, storing copies and SHA-256 checksums in private timestamped directories below \`/home/amitaxon/via-fullsite-deployment/backups/full-site/\`.
+
+### SSH: launch in background (survives SSH disconnection)
+
+\`\`\`bash
+set -euo pipefail
+WP=/home/amitaxon/public_html
+BASE=/home/amitaxon/via-fullsite-deployment
+SCRIPT="$BASE/backup-via-wordpress.sh"
+OUT="$BASE/backups/full-site"
+test "$(runuser -u amitaxon -- wp --path="$WP" option get siteurl)" = "https://axonserver.com"
+test "$(runuser -u amitaxon -- wp --path="$WP" option get elementor_active_kit)" = "19"
+test -x "$SCRIPT"
+bash -n "$SCRIPT"
+test -d "$OUT"
+if pgrep -u amitaxon -f '[b]ackup-via-wordpress.sh' >/dev/null; then
+  echo "STOP: another VIA backup is running"
+  exit 1
+fi
+df -h "$OUT"
+STAMP=$(date +%Y%m%d-%H%M%S)
+LOG="$OUT/backup-$STAMP.log"
+PID="$OUT/backup-$STAMP.pid"
+runuser -u amitaxon -- env VIA_SCRIPT="$SCRIPT" VIA_LOG="$LOG" VIA_PID="$PID" sh -c '
+  umask 077
+  nohup nice -n 10 "$VIA_SCRIPT" >"$VIA_LOG" 2>&1 </dev/null &
+  echo $! >"$VIA_PID"
+'
+echo "LOG: $LOG"
+echo "PID: $(cat "$PID")"
+sleep 3
+tail -n 20 "$LOG"
+\`\`\`
+
+Do not edit/publish Elementor during the backup window. **Do not launch another backup if an existing one is still running.**
+
+### SSH: monitor and verify completion
+
+\`\`\`bash
+set -euo pipefail
+OUT=/home/amitaxon/via-fullsite-deployment/backups/full-site
+LOG=$(find "$OUT" -maxdepth 1 -type f -name 'backup-*.log' -printf '%f\n' | sort | tail -1)
+test -n "$LOG"
+LOG="$OUT/$LOG"
+echo "Latest log: $LOG"
+tail -n 35 "$LOG"
+if ! grep -q 'VIA FULL WORDPRESS BACKUP COMPLETED' "$LOG"; then
+  echo "Not yet complete. Do NOT treat as a recovery point."
+  exit 1
+fi
+DEST=$(sed -n 's/^Location: //p' "$LOG" | tail -1)
+case "$DEST" in "$OUT"/VIA-FULL-*) ;; *) echo "Unexpected backup destination"; exit 1 ;; esac
+test -d "$DEST"
+test -s "$DEST/database.sql"
+test -s "$DEST/wordpress-files.tar.gz"
+test -s "$DEST/SHA256SUMS.txt"
+(cd "$DEST"; sha256sum -c SHA256SUMS.txt; gzip -t wordpress-files.tar.gz)
+du -sh "$DEST"
+echo "NEW BACKUP VERIFIED: $DEST"
+\`\`\`
+
+Record the **actual new snapshot directory** and its successful checksum output in GitHub *after* running these commands. Do not store archives, SQL dumps or access secrets in the public repository. Keep an encrypted copy off-server for disaster recovery. Checkums do not substitute for a test restore on a staging site.
