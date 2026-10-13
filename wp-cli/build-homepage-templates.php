@@ -300,32 +300,74 @@ $flatten=static function(array $node)use(&$flatten,&$widgets):void{
 };
 $flatten($cta);
 $types=array_count_values(array_map(static fn($node)=>$node['widgetType']??'',$widgets));
-if (($types['heading']??0)!==1 || ($types['text-editor']??0)!==2 || ($types['button']??0)!==1 || array_sum($types)!==4)
-    WP_CLI::error('CTA content structure differs: '.wp_json_encode($types));
-$label=null;$headline=null;$support=null;$button=null;
-foreach($widgets as $widget){
-  if($widget['widgetType']==='heading')$headline=$widget;
-  elseif($widget['widgetType']==='button')$button=$widget;
-  elseif($label===null)$label=$widget;
-  else $support=$widget;
+if (($types['heading']??0)!==1 || ($types['text-editor']??0)!==1 ||
+    ($types['button']??0)!==1 || array_sum($types)!==3)
+    WP_CLI::error('CTA content structure differs from current 3-widget design: '.wp_json_encode($types));
+
+// The current homepage Consultation section has EXACTLY three widget types:
+// heading, text editor, button. Its smaller eyebrow is part of the existing
+// source presentation and must NOT be replaced with invented wording.
+// Preserve the entire container / widget hierarchy, including every link.
+if (count($cta['elements']??[])!==3)
+    WP_CLI::error('Consultation must have three direct responsive columns; no content changed.');
+
+$originalChildren=$cta['elements'];
+$directClassify=static function(array $node):array{
+    $found=[];
+    $scan=static function(array $el)use(&$scan,&$found):void{
+        if (($el['elType']??'')==='widget')
+            $found[]=$el['widgetType']??'unknown';
+        foreach($el['elements']??[] as $child)$scan($child);
+    };
+    $scan($node);
+    return $found;
+};
+$colSettings=[
+    'heading'     => ['name'=>'CTA existing heading column','width'=>44],
+    'text-editor' => ['name'=>'CTA existing description column','width'=>32],
+    'button'      => ['name'=>'CTA existing button column','width'=>20],
+];
+$seen=[];
+foreach($cta['elements'] as &$column){
+    if (($column['elType']??'')!=='container')
+        WP_CLI::error('Consultation child is not a native Elementor container');
+    $typesInColumn=$directClassify($column);
+    if (count($typesInColumn)!==1 || !isset($colSettings[$typesInColumn[0]]))
+        WP_CLI::error('Unexpected Consultation child widgets: '.wp_json_encode($typesInColumn));
+    $kind=$typesInColumn[0];
+    if (isset($seen[$kind]))WP_CLI::error('Duplicate Consultation column: '.$kind);
+    $seen[$kind]=true;
+    $column['settings']['_title']=$colSettings[$kind]['name'];
+    $setWidth($column['settings'],$colSettings[$kind]['width'],100,100);
 }
-if (!$label || !$headline || !$support || !$button)WP_CLI::error('CTA widget extraction failed');
-$font($label['settings'],'text',12);$font($headline['settings'],'primary',36);
-$left=$newContainer('CTA label and heading',[$label,$headline]);
-$left['settings']['flex_gap']=$gap(12);$setWidth($left['settings'],44,100,100);
-$middle=$newContainer('CTA description',[$support]);
-$setWidth($middle['settings'],32,100,100);
-$right=$newContainer('CTA button',[$button]);
-$setWidth($right['settings'],20,100,100);
-$right['settings']['flex_align_items']='center';
-$right['settings']['flex_justify_content']='center';
-$cta['elements']=[$left,$middle,$right];
+unset($column);
+if (count($seen)!==3)WP_CLI::error('Consultation columns incomplete');
+// Change only the cloned SECTION'S native responsive Flexbox controls.
+// All nested widgets, original text, links, accents and existing layout are
+// copied from current Elementor, NOT constructed from legacy GitHub content.
 $sectionBase($cta,'homepage-06-Start-a-Conversation');
 $layout($cta['settings'],'row');
+$cta['settings']['flex_direction_tablet']='column';
+$cta['settings']['flex_direction_mobile']='column';
 $cta['settings']['flex_wrap']='wrap';
 $cta['settings']['flex_align_items']='center';
 $cta['settings']['flex_justify_content']='space-between';
 $cta['settings']['flex_gap']=$gap(18);
+
+// Invariant: each original source widget remains intact (including its settings).
+$canonicalWidgetData=static function(array $section)use(&$canonicalWidgetData):array{
+    $all=[];
+    if(($section['elType']??'')==='widget')
+        $all[]=[
+            'type'=>$section['widgetType']??'',
+            'settings'=>$section['settings']??[]
+        ];
+    foreach($section['elements']??[] as $child)
+        $all=array_merge($all,$canonicalWidgetData($child));
+    return $all;
+};
+if ($canonicalWidgetData(['elements'=>$originalChildren]) !== $canonicalWidgetData($cta))
+    WP_CLI::error('Consultation widget data changed unexpectedly; abort without writes');
 
 // Build independent self-contained Library documents. Each source section
 // is deep-copied; the live page's original IDs/settings/data remain unchanged.
