@@ -1,4 +1,6 @@
-# VIA Frontiers — Client Voices Animated Slider v2 (SSH candidate)
+# VIA Frontiers — Client Voices Animated Slider v2 (SUPERSEDED — DO NOT INSTALL)
+
+**Latest user decision:** Do **not** use slides. Keep all three testimonial cards visible and use only a subtle floating hover effect. See the current [three-card hover specification](CLIENT-VOICES-THREE-CARD-HOVER.md). The older PHP slideshow creator described below should **not** be uploaded or executed. The remaining content is retained only for historical traceability.
 
 **Source status:** PHP file prepared for administrator upload; **server dry run and visual approval pending**. The PHP implementation is intentionally **not yet committed** to public GitHub under the established SSH-test-first rule.
 
