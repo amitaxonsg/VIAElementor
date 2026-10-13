@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.5.0');
+    wp_register_style('via-pathways-modern', false, [], '1.6.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -33,13 +33,13 @@ body.page-id-21 .elementor-element-0000016 p {
   font-weight: 700;
   letter-spacing: .10em;
   text-transform: uppercase;
-  font-size: 13px !important;
+  font-size: 12px !important;
   margin: 0;
 }
 body.page-id-21 .elementor-element-0000017 .elementor-heading-title {
   color: var(--vpm-navy);
   font-family: var(--e-global-typography-primary-font-family, inherit);
-  font-size: clamp(35px, 3.4vw, 53px) !important;
+  font-size: 36px !important;
   line-height: 1.06 !important;
   font-weight: 500;
   margin: 0 0 4px;
@@ -185,7 +185,7 @@ body.page-id-21 :is(.elementor-element-000001d,.elementor-element-0000023,.eleme
   body.page-id-21 .elementor-element-000002b { grid-template-columns: minmax(0,1fr) !important; }
   body.page-id-21 .elementor-element-000002a { grid-column: auto; }
   body.page-id-21 :is(.elementor-element-000001e,.elementor-element-0000024,.elementor-element-000002a) { min-height: 0; padding: 22px !important; }
-  body.page-id-21 .elementor-element-0000017 .elementor-heading-title { font-size: 38px !important; }
+  body.page-id-21 .elementor-element-0000017 .elementor-heading-title { font-size: 36px !important; }
 }
 @media (prefers-reduced-motion:reduce) {
   body.page-id-21 :is(.elementor-element-000001e,.elementor-element-0000024,.elementor-element-000002a) { transition: none; }
@@ -235,125 +235,24 @@ body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
   font-weight: 500;
   line-height: 1.06;
 }
-body.page-id-21 .elementor-element-0000017 { margin-bottom: -10px; }
+/* Do not offset independently editable Elementor heading positions. */
 @media(max-width:767px) {
  body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) { height: 128px !important; min-height: 128px; }
 }
 
-/* v1.2: stacked two-colour heading, both still independent Elementor widgets. */
-body.page-id-21 .elementor-element-000002c {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-}
-body.page-id-21 .elementor-element-0000017,
-body.page-id-21 .elementor-element-a71c9f2 {
-  flex: 0 0 auto !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  align-self: stretch !important;
-  margin: 0 !important;
-}
-body.page-id-21 .elementor-element-0000017 .elementor-heading-title,
-body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1.04 !important;
-  font-family: var(--e-global-typography-primary-font-family, inherit) !important;
-}
-body.page-id-21 .elementor-element-a71c9f2 { margin-bottom: 12px !important; }
-
-/* VIA heading size standard: eyebrow 12px, main section headings 36px.
-   Font families continue to inherit from Elementor Site Kit globals. */
+/* Clean stable typography baseline. No parent section display/grid/flex override. */
 body.page-id-21 .elementor-element-000002c .elementor-element-0000016 p {
   font-size: 12px !important;
+  font-family: var(--e-global-typography-text-font-family, inherit);
 }
-body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017, .elementor-element-a71c9f2) .elementor-heading-title {
+body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title {
   font-size: 36px !important;
   font-family: var(--e-global-typography-primary-font-family, inherit) !important;
+  line-height: 1.12 !important;
 }
-
-/* v1.4: small eyebrow above ONE desktop headline row; two editable colour segments. */
-@media(min-width:768px) {
- body.page-id-21 .elementor-element-000002c {
-   display: grid !important;
-   grid-template-columns: max-content minmax(0, 1fr) !important;
-   column-gap: 12px !important;
-   row-gap: 8px !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-0000016 {
-   grid-column: 1 / -1 !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-0000017 {
-   grid-column: 1 !important;
-   width: auto !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-a71c9f2 {
-   grid-column: 2 !important;
-   width: auto !important;
-   margin-bottom: 0 !important;
- }
- body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title {
-   white-space: nowrap;
-   font-size: 36px !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-0000018,
- body.page-id-21 .elementor-element-000002c > .elementor-element-000002b {
-   grid-column: 1 / -1 !important;
- }
-}
-@media(max-width:767px) {
- body.page-id-21 .elementor-element-000002c { display:flex !important; flex-direction:column !important; }
- body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title { font-size:36px !important; white-space:normal; }
-}
-
-/* v1.5 correction: Elementor flex parent, not grid. */
-@media (min-width: 768px) {
- body.page-id-21 .elementor-element-000002c {
-   display: flex !important;
-   flex-direction: row !important;
-   flex-wrap: wrap !important;
-   align-content: flex-start !important;
-   align-items: baseline !important;
-   justify-content: flex-start !important;
-   column-gap: 12px !important;
-   row-gap: 0 !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-0000016 {
-   order: 0 !important;
-   flex: 0 0 100% !important;
-   width: 100% !important;
-   max-width: 100% !important;
- }
- body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017, .elementor-element-a71c9f2) {
-   order: 1 !important;
-   display: block !important;
-   flex: 0 0 auto !important;
-   width: auto !important;
-   max-width: none !important;
-   min-width: 0 !important;
-   align-self: baseline !important;
-   margin: 0 !important;
-   padding: 0 !important;
- }
- body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017, .elementor-element-a71c9f2) .elementor-heading-title {
-   font-size: 36px !important;
-   white-space: nowrap !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-0000018 {
-   order: 2 !important;
-   flex: 0 0 100% !important;
-   width: 100% !important;
-   max-width: 520px !important;
-   margin: 14px 0 28px !important;
- }
- body.page-id-21 .elementor-element-000002c > .elementor-element-000002b {
-   order: 3 !important;
-   flex: 0 0 100% !important;
-   width: 100% !important;
- }
-}
-/* Small screens may wrap the heading to protect the layout. */
+/* Deliberately DO NOT manipulate how the two heading widgets sit
+   in relation to one another. Future one-line change requires
+   a native Elementor inner container, not grid/flex rules on 03 Pathways. */
 
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
