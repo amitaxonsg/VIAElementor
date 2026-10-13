@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Latest full-site backup verified (14:09 local)
+
+- User SSH output confirms private full WordPress recovery snapshot `VIA-FULL-20261013-140913` (~108 MB), with database, website archive and checksum verification reported successful.
+- This is the preferred newest recovery checkpoint ahead of older `VIA-FULL-20261013-120355`; no backup archives or SQL files were committed. Historical pending-backup wording in earlier entries is superseded by this verified status.
+- The previous incomplete `120013` folder remains and is not considered a valid backup. Full staging restore and independent off-server storage are not yet confirmed.
+
+
 ## 2026-10-13 — Ten common editable responsive templates prepared
 
 - Added [ten new candidate Saved Container template builder](wp-cli/create-ten-common-templates.php) and [editing/QA guide](docs/TEN-COMMON-ELEMENTOR-TEMPLATES.md).
