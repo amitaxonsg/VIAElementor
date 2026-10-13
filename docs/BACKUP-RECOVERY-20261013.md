@@ -85,9 +85,9 @@ GitHub records the backup **manifest, procedure, and recovery instructions**. Ac
 **Going forward:** SSH trial → visual and functional verification → approval → GitHub documentation or reviewed code commit. For high-impact changes, first confirm this recovery checkpoint or make a fresher verified snapshot.
 
 
-## NEW: After-templates full-site backup procedure — 2026-10-13 (pending execution)
+## Later full-site backup — executed and verified 2026-10-13 at 14:09 (+08:00)
 
-The user explicitly requested a **new recovery snapshot of everything as the website stands now**, after Saved Templates and the restored branding. The earlier verified `VIA-FULL-20261013-120355` is still preserved but predates newer templates. **No new backup has been verified yet.**
+**Latest verified snapshot:** `/home/amitaxon/via-fullsite-deployment/backups/full-site/VIA-FULL-20261013-140913` (~108 MB). User's SSH output states “Database, files and checksums verified.” This is the current preferred full-site recovery point. The earlier `VIA-FULL-20261013-120355` (~106 MB, separate earlier checksum confirmation) remains preserved. No actual staging restore or off-server copy has been confirmed. The incomplete `.incomplete-20261013-120013-COEqqM` must not be treated as a complete backup. The following instructions are retained for future backup runs.
 
 The tested existing server-local backup creator is:
 
