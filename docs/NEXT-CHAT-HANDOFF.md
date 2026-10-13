@@ -124,3 +124,17 @@ Current site audit: FIRE top-level section is `b8800dd`, `VIA FIRE Native Rows`;
 The user requested all VIA inner pages (22–49) to have a full-width photographic hero with **editable breadcrumb, page title, introduction, CTA button and optional supporting description** at roughly **half the approved homepage hero height**. New named Saved Container template is `Inner Pages Hero Template`. GitHub creator: `wp-cli/create-inner-pages-hero-template.php` (revision `f477218be96d74c6fae80e33b4f471625a8eca47`). Design: Elementor Free Flexbox, global fonts/colours from Site Kit 19, desktop 35vh minimum, 360px tablet / 420px mobile minimum, and outer padding copied from `Sylvia counter Flexbox`. Background defaults to approved homepage photograph as an **editable placeholder**—replace image and breadcrumb/text for each inner page. No automatic per-page breadcrumb/title dynamic binding in standard Elementor Free saved templates. **Not run/tested on WordPress yet; do dry-run first.** Documentation: [Inner Pages Hero Template](INNER-PAGES-HERO-TEMPLATE.md). Do not automatically insert into published pages yet or overwrite existing heroes.
 
 For future pages, use **Sylvia counter Flexbox outer width/padding as a common design standard**. Previously prepared exact-title script `wp-cli/via-template-match-sylvia-spacing.php` (four homepage templates) and new generic opt-in script `wp-cli/via-template-sync-sylvia-spacing.php` (exact titles specified on CLI) are both tracked. No evidence in this chat that they have been deployed or visually tested; keep as code pending SSH dry run and approval. No hardcoded font-family names, existing branding from Kit 19, 12px small section headings, 36px main headings, 25px card headings where appropriate. Never touch shared Header 57/Footer 58 or live page 21 to create a template.
+
+
+## Standard cPanel upload directory — confirmed 2026-10-13
+
+**Always check /home/amitaxon/ first before asking the user to upload or download another PHP script.** The user consistently uploads scripts using **cPanel File Manager → /home/amitaxon/**, outside `public_html`. Their screenshot showed **100% upload completed** for:
+- `/home/amitaxon/VIA-Homepage-Template-Modernizer-v1.php`
+- `/home/amitaxon/via-template-match-sylvia-spacing.php`
+- `/home/amitaxon/create-inner-pages-hero-template.php`
+
+**Upload confirmed by screenshot only**; syntax, file contents, execution and template creation are not yet confirmed. User has not agreed to run a new deployment.
+
+For all future SSH instructions, use the already-uploaded **exact** script path from `/home/amitaxon/`. Check `test -s`, `stat`/`ls -l`, `php -l`, website+Site Kit safeguards, and WP-CLI `dry-run` as `amitaxon` first. Only then propose `apply`, with user approval as appropriate. Do not default to `/tmp` or force an extra GitHub download. If a newer GitHub revision is necessary, clearly warn that the manually uploaded copy may be older and obtain/verify the correct version first.
+
+Keep PHP source, server backups and all work account-scoped. The cPanel upload location is NOT the WordPress plugin folder nor a public website URL. Avoid exposing private backups under `public_html`.
