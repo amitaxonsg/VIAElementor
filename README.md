@@ -79,3 +79,10 @@ The project has **six user-confirmed Saved Templates** (`Sylvia counter Flexbox`
 [Plan for about 36 Saved Container templates](docs/TEMPLATE-ROADMAP-30-40.md) — six existing plus 30 proposed concepts, built in staged groups with the Sylvia template as the outer width/padding reference. This is a **plan, not an assertion the remaining templates have been created**.
 
 **A fresh private server backup is pending:** the earlier verified `VIA-FULL-20261013-120355` snapshot predates several changes. Run the [detached full-site backup procedure](docs/OPERATIONS.md) before the next large template batch. Never commit SQL archives or private recovery files to GitHub.
+
+
+## Ten common responsive Elementor templates (candidate)
+
+Prepared [ten reusable Elementor Free Container templates](docs/TEN-COMMON-ELEMENTOR-TEMPLATES.md): FAQ accordion, two-column editorial, three-column highlights, editable flip cards, circular track record, profile biography, services overview, coaching journey, classes/programmes, and a contact/enquiry layout with **two independently editable CTA links**. The guarded source generator is [`wp-cli/create-ten-common-templates.php`](wp-cli/create-ten-common-templates.php).
+
+**Status:** Committed to GitHub for SSH pull, but **not yet server linted, dry-run, imported, or visually approved**. Creates ten new Saved Template records only; neither the homepage nor any published inner pages change. Templates use Elementor Site Kit 19 Global Fonts/Colours and Sylvia counter Flexbox's current outer width/padding. The Flip Boxes template alone includes template-scoped HTML/CSS/JavaScript because Elementor Free's native Flip Box is a Pro feature; its text stays editable as native Elementor widgets.
