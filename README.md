@@ -54,3 +54,6 @@ Never commit `wp-config.php`, secrets, private backups, database dumps, user rec
 ## Current migration checkpoint
 
 Prior server logs reported 29 VIA pages with Elementor content and **2,341** Global Style references across 31 documents (pages plus Header 57 / Footer 58). The latest screenshot shows the **approved photographic homepage hero** with lower Sylvia/counter strip. Exact server status of the most recent typography cleanup and shared-header/footer deployment still requires fresh WordPress verification; see [handoff](docs/NEXT-CHAT-HANDOFF.md). The repository contains guarded scripts but does **not** claim they have all been deployed.
+## Verified recovery checkpoint (2026-10-13)
+
+A private full WordPress files + database snapshot was completed on the development server and both SHA-256 checksum checks passed. **Do not upload the backup archives to this public GitHub repository.** Read [Backup & Recovery — 2026-10-13](docs/BACKUP-RECOVERY-20261013.md) before risky changes. GitHub is documentation, **not** the backup itself.
