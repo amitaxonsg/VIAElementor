@@ -1,6 +1,6 @@
 # VIA Frontiers — Reusable Homepage Flexbox Templates (v1 candidate)
 
-**Status:** GitHub code prepared; **not deployed, previewed, or visually approved** in WordPress.  
+**Current status (2026-10-13):** The user confirmed creation of all four homepage Saved Container templates (IDs 196–199) and showed previews. This document also preserves the early pre-import diagnostic history below. See the latest [Frozen Working Baseline](APPROVED-WORKING-BASELINE-20261013.md) and [36-Template Roadmap](TEMPLATE-ROADMAP-30-40.md) for the current authoritative status. Local edits after initial creation may not match this builder source.  
 **Architecture:** WordPress-first content, GitHub-reviewed generator; **Elementor Free**, no Pro license required for saved Container templates.
 
 ## Templates to create
