@@ -98,3 +98,7 @@ The new [Ten Common Template Generator](../wp-cli/create-ten-common-templates.ph
 ## New FIRE Timeline design candidate (2026-10-13)
 
 New candidate `inner-20-FIRE-Timeline` committed as [native Elementor Free creator](../wp-cli/create-via-fire-timeline-template.php) to reproduce the approved numbered vertical F/I/R/E step cards. Independent of Saved Template `homepage-04-FIRE-Approach` (ID 197), which stays untouched. **Creation not confirmed**, and the two templates may overlap in purpose; count this as a distinct optional design variant only if both are genuinely used. Avoid inflating the 36-template completion count through duplicates. Global Kit 19 styling and Sylvia 178 responsive outer spacing apply. See [design and import QA](FIRE-TIMELINE-ELEMENTOR-TEMPLATE.md).
+
+## 2026-10-13 — Carousel v3 candidate
+
+The latest requested Client Voices treatment is an **editable auto-rotating one-at-a-time carousel with Pause / Play** rather than the previously considered three-card floating hover. New candidate Saved Container: `homepage-05-Client-Voices-Carousel-v3` (NOT installed yet). It reuses existing three verified quote/attribution widgets from Template 198, keeps template 198 unchanged, and supports adding more testimonials by duplicating a slide inside the new Saved Template; the dot count follows the actual slides automatically. Documentation: [Client Voices Carousel v3](CLIENT-VOICES-CAROUSEL-V3.md). The earlier options remain historical and should not be counted as completed templates. No site or CSS kit change.
