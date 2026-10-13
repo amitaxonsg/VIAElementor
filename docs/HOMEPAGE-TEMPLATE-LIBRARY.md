@@ -97,3 +97,11 @@ The corrected FIRE mapping allowed the dry run to progress to Consultation, whic
 Pinned builder revision `0a9c471657d69c1bc90a26584d9eca415ec1fa95` now preserves the existing three source widgets and native column subtrees rather than adding an invented label widget. It checks that there are exactly three direct child containers, each containing one of heading/text editor/button, retains complete widget settings and links, and changes only copied responsive container widths. Any further structure mismatch aborts without writes.
 
 **Next:** replace the downloaded `/home/amitaxon/build-homepage-templates.php` with the pinned revision and execute `php -l` and `dry-run`. Do not apply unless it reports `DRY RUN PASSED — zero writes` and lists all four templates. Client preview/approval still pending.
+
+## 2026-10-13 — Current Consultation children are mixed elements
+
+User's dry run for pinned commit `0a9c471657d69c1bc90a26584d9eca415ec1fa95` stopped safely on `Consultation child is not a native Elementor container`. We know that CTA section has one heading, one text editor, one button across three direct children, but not every direct child is itself a container.
+
+- Commit **`5372c3c0d61bc9b16f88cb6d565321c500cb3593`** fixes this by preserving existing nested containers and putting any directly nested Widget into a **new native Flexbox wrapper only in the saved-template copy**. It retains exact widget settings and checks the widget data before permitting writes.
+- It validates one known widget type per direct child and stops with a child ID/type if the structure does not match; it never mutates the live homepage.
+- **Server-side `php -l` and `dry-run` are still pending for this commit.** Discard earlier copies; use the pinned commit, and do not run `apply` if any assertion fails.
