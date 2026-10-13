@@ -89,3 +89,11 @@ The 04 FIRE approach section ID `000003f` was **replaced** on the development ho
 - New pinned commit `e1fb73d272627dc32d9900c22e4f7e8ebca0406c` makes the builder source FIRE from the **current** native row hierarchy, preserving the existing heading and row widgets rather than rebuilding the obsolete 000003f card format.
 - Corrected builder still requires full `dry-run` validation of **Pathways, FIRE, Client Voices, and Consultation**, including the existing Sylvia counter template. A later error may indicate other content/structure changes; do not force through it.
 - **Not confirmed applied** in WordPress. SSH-first dry run remains the next action.
+
+## 2026-10-13 — Actual Consultation structure detected during dry run
+
+The corrected FIRE mapping allowed the dry run to progress to Consultation, which returned `CTA content structure differs: {"heading":1,"text-editor":1,"button":1}`. That result means the live section has **three** Elementor widgets, not the legacy four-widget expectation. No templates or page edits were made during the dry-run failure.
+
+Pinned builder revision `0a9c471657d69c1bc90a26584d9eca415ec1fa95` now preserves the existing three source widgets and native column subtrees rather than adding an invented label widget. It checks that there are exactly three direct child containers, each containing one of heading/text editor/button, retains complete widget settings and links, and changes only copied responsive container widths. Any further structure mismatch aborts without writes.
+
+**Next:** replace the downloaded `/home/amitaxon/build-homepage-templates.php` with the pinned revision and execute `php -l` and `dry-run`. Do not apply unless it reports `DRY RUN PASSED — zero writes` and lists all four templates. Client preview/approval still pending.
