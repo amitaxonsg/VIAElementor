@@ -90,3 +90,7 @@ Prepared [ten reusable Elementor Free Container templates](docs/TEN-COMMON-ELEME
 ## Reusable FIRE timeline template (candidate)
 
 A new *non-destructive* Elementor Free timeline design, **`inner-20-FIRE-Timeline`**, is available as a [guarded WP-CLI Saved Container creator](wp-cli/create-via-fire-timeline-template.php) with [design/installation guide](docs/FIRE-TIMELINE-ELEMENTOR-TEMPLATE.md). Based on the user-approved F/I/R/E screenshot: four numbered timeline steps, editable navy circles, orange dividers and individual Heading/Text widgets. Uses Global Kit 19 fonts/colours and existing Sylvia counter template (ID 178) for outer width/padding. **GitHub source committed; WordPress installation and visual QA not yet confirmed.** Existing live FIRE section `b8800dd` and Saved Template 197 are left untouched.
+
+## Pathways Image Cards v2 (candidate)
+
+The selected Pathways redesign (three **top-image** cards with editable icon, title, tagline, original text and CTAs) is documented in [Pathways Image Cards v2](docs/PATHWAYS-IMAGE-CARDS-V2.md). A new `homepage-03-Pathways-Image-Cards-v2` Saved Container is proposed, without overwriting the existing `homepage-03-Pathways` template or any live page. The code/assets are supplied privately to the administrator for server dry-run and visual approval before the final implementation commit; image crops are not stored on public GitHub. Uses Site Kit 19 Global Styles and Sylvia 178 outer padding.
