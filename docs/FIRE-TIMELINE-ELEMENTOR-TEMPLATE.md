@@ -22,7 +22,7 @@
 - Outer width and padding are cloned from the currently-approved Saved Container **Sylvia counter Flexbox** (ID 178). Do not impose new global widths.
 - Heading sizes: small text **12px**, main heading **36px desktop / 30px mobile**, action headings **25px desktop / 23px mobile**, descriptions **16px**. All size and colour controls remain independently editable in Elementor.
 - Circle backgrounds bind to `primary` and `via_stone`; line dividers bind to `accent`; card backgrounds bind to `via_white`; borders bind to `via_stone`.
-- Native Flexbox responsive controls keep numbered timeline on the left and let action/explanation text wrap rather than clip on mobile. **Actual rendering must still be checked at desktop, tablet and 390px mobile** before insertion on a published page.
+- Native Flexbox responsive controls keep the numbered timeline on the left. On narrow mobile, each card switches to vertically stacked letter badge, orange horizontal divider and editable action/body text, with a reduced card width to avoid horizontal overflow. **Actual rendering must still be checked at desktop, tablet and 390px mobile** before insertion on a published page.
 
 ## Installation
 
@@ -34,7 +34,7 @@ WP=/home/amitaxon/public_html
 SCRIPT=/home/amitaxon/create-via-fire-timeline-template.php
 test "$(runuser -u amitaxon -- wp --path="$WP" option get siteurl)" = "https://axonserver.com"
 test "$(runuser -u amitaxon -- wp --path="$WP" option get elementor_active_kit)" = "19"
-curl -fLsS --max-time 30  "https://raw.githubusercontent.com/amitaxonsg/VIAElementor/4f9a29ac4bd7a0b73539e6f91e943b3049a4ba55/wp-cli/create-via-fire-timeline-template.php"  -o "$SCRIPT"
+curl -fLsS --max-time 30  "https://raw.githubusercontent.com/amitaxonsg/VIAElementor/93422bf5e5a6812962a041de2b3c2e7533264b8c/wp-cli/create-via-fire-timeline-template.php"  -o "$SCRIPT"
 chown amitaxon:amitaxon "$SCRIPT"
 chmod 600 "$SCRIPT"
 php -l "$SCRIPT"
