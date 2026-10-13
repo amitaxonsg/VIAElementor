@@ -1,4 +1,6 @@
-# VIA Frontiers — Client Voices Animated Slider v2 (SUPERSEDED — DO NOT INSTALL)
+# VIA Frontiers — Client Voices Slider v2 (obsolete; replaced by Carousel v3)
+
+**Latest user decision:** Create the [Client Voices Carousel v3](CLIENT-VOICES-CAROUSEL-V3.md), which includes Pause/Play and dynamically generated dots when additional testimonial cards are duplicated. Do not install v2, which predates these requirements. Older v2/hover reversals below are historical.
 
 **Latest user decision:** Do **not** use slides. Keep all three testimonial cards visible and use only a subtle floating hover effect. See the current [three-card hover specification](CLIENT-VOICES-THREE-CARD-HOVER.md). The older PHP slideshow creator described below should **not** be uploaded or executed. The remaining content is retained only for historical traceability.
 
