@@ -195,70 +195,51 @@ unset($card);
 $path['elements']=[$intro,$cards];
 $sectionBase($path,'homepage-03-Pathways');
 
-// 2 — FIRE Approach: create one coloured heading row; preserve four existing steps.
-$fire=$top('000003f','04 FIRE approach');
-$fireChildIds=array_column($fire['elements']??[],'id');
-if ($fireChildIds===['000002d','000003e']){
-    [$fireTitle,$steps]=$fire['elements'];
-    if (($fireTitle['widgetType']??'')!=='heading' ||
-        trim(preg_replace('/\s+/',' ',wp_strip_all_tags($fireTitle['settings']['title']??'')))!=='THE VIA APPROACH')
-        WP_CLI::error('FIRE title changed; no templates created.');
-} else {
-    // If the on-server FIRE redesign already has a two-colour heading,
-    // halt instead of accidentally duplicating a heading or discarding text.
-    WP_CLI::error('FIRE heading structure differs: '.implode(',',$fireChildIds).'. Send dry-run output for safe adaptation.');
+// 2 — FIRE Approach: clone the *CURRENT* proven native four-row Elementor design.
+// The original 000003f section was replaced on the server by b8800dd.
+// Its two title widgets and four nested rows must be preserved in place.
+$fire=$top('b8800dd','VIA FIRE Native Rows');
+$expectChildren($fire,['b5bb7c9','eb885d3'],'Current native FIRE section');
+[$fireHeading,$steps]=$fire['elements'];
+if (($fireHeading['elType']??'')!=='container' || ($steps['elType']??'')!=='container')
+    WP_CLI::error('Native FIRE headline or rows container changed.');
+$expectChildren($fireHeading,['f5391fc','931821d'],'Current two-colour FIRE headline');
+$expectChildren($steps,['9c53df3','937ef3f','de631fa','cb93c4a'],'Current four FIRE rows');
+foreach($fireHeading['elements'] as $i=>&$h){
+    if (($h['widgetType']??'')!=='heading')
+        WP_CLI::error('Native FIRE title must contain two heading widgets.');
+    // Preserve the user's title WORDING, but keep heading font/size/global colours editable.
+    $font($h['settings'],'primary',36);
+    $paint($h['settings'],'title_color',$i===0?'primary':'accent');
 }
-$fireA=$fireTitle;$fireB=$fireTitle;
-$fireA['settings']['title']='THE VIA';
-$fireB['settings']['title']='APPROACH';
-$font($fireA['settings'],'primary',36);$font($fireB['settings'],'primary',36);
-$paint($fireA['settings'],'title_color','primary');
-$paint($fireB['settings'],'title_color','accent');
-$fireB['id']=''; // Will be assigned a distinct final Elementor ID.
-$fireHeading=$newContainer('FIRE two-colour title',[$fireA,$fireB]);
-$layout($fireHeading['settings'],'row');$fireHeading['settings']['flex_wrap']='wrap';
+unset($h);
+$layout($fireHeading['settings'],'row');
+$fireHeading['settings']['flex_wrap']='wrap';
 $fireHeading['settings']['flex_direction_mobile']='row';
-$fireHeading['settings']['flex_align_items']='baseline';$fireHeading['settings']['flex_gap']=$gap(12);
-$expectChildren($steps,['0000031','0000035','0000039','000003d'],'FIRE steps');
-foreach($steps['elements'] as &$card){
-    $nodes=$card['elements']??[];
-    if(count($nodes)!==3 || ($nodes[0]['widgetType']??'')!=='heading'
-       || ($nodes[1]['widgetType']??'')!=='heading'
-       || ($nodes[2]['widgetType']??'')!=='text-editor')WP_CLI::error('FIRE step widget types changed.');
-    [$letter,$word,$explain]=$nodes;
-    $font($letter['settings'],'primary',25);
-    $letter['settings']['background_background']='classic';
-    $paint($letter['settings'],'background_color','primary');
-    $paint($letter['settings'],'title_color','via_white');
-    $letter['settings']['border_radius']=$edge(50,50,50,50);
-    $letter['settings']['padding']=$edge(12,0,12,0);
-    $letter['settings']['align']='center';
-    $setWidth($letter['settings'],7,16,18);
-    $font($word['settings'],'text',16);
-    $word['settings']['typography_font_weight']='700';
-    $copy=$newContainer('Step wording',[$word,$explain]);
-    $layout($copy['settings'],'row');$copy['settings']['flex_direction_mobile']='row';
-    $copy['settings']['flex_wrap']='wrap';$copy['settings']['flex_gap']=$gap(4);
-    $copy['settings']['flex_align_items']='center';$setWidth($copy['settings'],90,80,78);
-    $card['elements']=[$letter,$copy];
-    $layout($card['settings'],'row');$card['settings']['flex_direction_mobile']='row';
-    $card['settings']['flex_align_items']='center';$card['settings']['flex_wrap']='wrap';
-    $card['settings']['flex_gap']=$gap(16);
-    $card['settings']['padding']=$edge(15,20,15,20);
-    $card['settings']['padding_mobile']=$edge(14,14,14,14);
-    $card['settings']['background_background']='classic';
-    $paint($card['settings'],'background_color','via_white');
-    $card['settings']['border_border']='solid';$card['settings']['border_width']=$edge(1,1,1,1);
-    $paint($card['settings'],'border_color','via_stone');
-    $card['settings']['border_radius']=$edge(14,14,14,14);
-}
-unset($card);
-$layout($steps['settings']);$steps['settings']['flex_gap']=$gap(12);
+$fireHeading['settings']['flex_align_items']='baseline';
+$fireHeading['settings']['flex_gap']=$gap(12);
+$fireHeading['settings']['_title']='FIRE heading — two global colours';
+$layout($steps['settings'],'column');
+$steps['settings']['flex_gap']=$gap(12);
 $steps['settings']['padding']=$edge(18,18,18,18);
 $steps['settings']['padding_mobile']=$edge(10,10,10,10);
-$steps['settings']['background_background']='classic';
-$paint($steps['settings'],'background_color','via_stone');
-$steps['settings']['border_radius']=$edge(20,20,20,20);
+$steps['settings']['_title']='Four existing FIRE process rows';
+// Each step ALREADY has its own approved letter circle and text layout.
+// Reuse its exact child hierarchy, strings, colours, and widget settings;
+// do not flatten the redesigned cards or re-create their contents.
+foreach($steps['elements'] as &$card){
+    if (($card['elType']??'')!=='container' || count($card['elements']??[])<1)
+        WP_CLI::error('Existing FIRE step container is incomplete.');
+    $layout($card['settings'],'row');
+    $card['settings']['flex_direction_tablet']='row';
+    $card['settings']['flex_direction_mobile']='row';
+    $card['settings']['flex_wrap']='wrap';
+    $card['settings']['flex_align_items']='center';
+    $card['settings']['flex_gap']=$gap(14);
+    $card['settings']['padding']=$edge(15,20,15,20);
+    $card['settings']['padding_mobile']=$edge(14,14,14,14);
+}
+unset($card);
 $fire['elements']=[$fireHeading,$steps];
 $sectionBase($fire,'homepage-04-FIRE-Approach','via_white');
 
