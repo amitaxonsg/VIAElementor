@@ -173,7 +173,7 @@ $root=[
  'background_image'=>$photo,
  'background_size'=>'cover','background_position'=>'center center',
  'background_position_tablet'=>'center center',
- 'background_position_mobile'=>'65% center',
+ 'background_position_mobile'=>'center center',
  'background_repeat'=>'no-repeat'
 ];
 foreach(['padding','padding_tablet','padding_mobile'] as $property)
