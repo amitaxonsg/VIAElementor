@@ -1,6 +1,6 @@
 # VIA Frontiers — Inner Pages Hero Template
 
-**Status:** GitHub source prepared. **Not yet deployed or visually tested on WordPress.**  
+**Current status (2026-10-13):** The user confirmed Saved Container Template **ID 218**, named `Inner Pages Hero Template`, was created and showed a preview. The sample background, breadcrumb, title and supporting description are placeholders to replace individually when inserting into inner pages. The historical SSH instructions below are retained for reference only; do not rerun the creator on an existing template.  
 **New Elementor Saved Container name:** `Inner Pages Hero Template`
 
 ## Design / use
