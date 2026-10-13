@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13 — Four modular homepage templates prepared for testing
+
+- Added guarded Elementor Free saved-Container builder for Pathways, FIRE Approach, Client Voices, and Start a Conversation, using existing page 21 content instead of recreating copy or assets.
+- Preserved Site Kit 19 global fonts/colours with native responsive Flexbox layout. The existing Sylvia counter Flexbox template remains untouched.
+- Source is reviewed construction code; templates have **not yet been imported, visually validated or published** on the development site. Live homepage, Header 57 and Footer 58 remain unchanged by this repository commit.
+
 ## 2026-10-13 — Verified server-local recovery checkpoint
 
 - Documented successful private backup `VIA-FULL-20261013-120355` (approximately 106 MB) with both SQL and WordPress file archive SHA-256 checks reported OK.
