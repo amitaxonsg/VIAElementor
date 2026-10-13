@@ -57,3 +57,7 @@ Prior server logs reported 29 VIA pages with Elementor content and **2,341** Glo
 ## Verified recovery checkpoint (2026-10-13)
 
 A private full WordPress files + database snapshot was completed on the development server and both SHA-256 checksum checks passed. **Do not upload the backup archives to this public GitHub repository.** Read [Backup & Recovery — 2026-10-13](docs/BACKUP-RECOVERY-20261013.md) before risky changes. GitHub is documentation, **not** the backup itself.
+
+## Reusable homepage Flexbox templates (candidate)
+
+Four new **native Elementor Free Container-template builders** are documented in [Homepage Template Library](docs/HOMEPAGE-TEMPLATE-LIBRARY.md), with guarded dry-run/apply code in [build-homepage-templates.php](wp-cli/build-homepage-templates.php). They clone the latest approved Pathways, FIRE, Client Voices and Start a Conversation sections from WordPress page 21 into **separate library templates**, without modifying the live homepage. The existing Sylvia counter Flexbox template remains in place. **Not yet deployed or visually verified.** No private page exports are committed.
