@@ -8,6 +8,7 @@
 - The PHP file supplied privately for initial SSH test is `via-client-voices-three-card-hover.php`; upload to `/home/amitaxon/` using cPanel File Manager.
 - Script will discover the current three testimonial cards by their existing authors **Marc Hoo, Rebecca Osmond, Antoinette Biehlmeier**, rejecting ambiguity. It does not recreate, edit or expose their quotation contents.
 - Original testimonial text, author, professional attribution, links, widget types, fonts, colours and entire three-column layout remain untouched.
+- Refuses to apply if previously installed carousel/slideshow markers are present; that case must be reviewed and removed separately rather than layering conflicting CSS.
 - Adds a root CSS class, one CSS class to each card, and **one HTML widget containing CSS scoped only to this saved template**. No CSS in Site Kit 19, global `style.css`, MU-plugin, or Elementor generated files. The CSS uses a neutral shadow, 9px hover lift, ~300ms transition; active only for hover-capable devices. Reduced-motion disables the lift/transition.
 - Elementor Free is sufficient; no new plugin or server packages, and no JavaScript/autoplay. Mobile/touch keeps the same three cards, stacking only as already controlled by the existing template's responsive settings.
 - No `wp elementor flush-css` after this content-only template update. Existing Kit 19 CSS was previously regenerated after a missing stylesheet issue.
