@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.3.0');
+    wp_register_style('via-pathways-modern', false, [], '1.4.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -271,6 +271,40 @@ body.page-id-21 .elementor-element-000002c .elementor-element-0000016 p {
 body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017, .elementor-element-a71c9f2) .elementor-heading-title {
   font-size: 36px !important;
   font-family: var(--e-global-typography-primary-font-family, inherit) !important;
+}
+
+/* v1.4: small eyebrow above ONE desktop headline row; two editable colour segments. */
+@media(min-width:768px) {
+ body.page-id-21 .elementor-element-000002c {
+   display: grid !important;
+   grid-template-columns: max-content minmax(0, 1fr) !important;
+   column-gap: 12px !important;
+   row-gap: 8px !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-0000016 {
+   grid-column: 1 / -1 !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-0000017 {
+   grid-column: 1 !important;
+   width: auto !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-a71c9f2 {
+   grid-column: 2 !important;
+   width: auto !important;
+   margin-bottom: 0 !important;
+ }
+ body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title {
+   white-space: nowrap;
+   font-size: 36px !important;
+ }
+ body.page-id-21 .elementor-element-000002c > .elementor-element-0000018,
+ body.page-id-21 .elementor-element-000002c > .elementor-element-000002b {
+   grid-column: 1 / -1 !important;
+ }
+}
+@media(max-width:767px) {
+ body.page-id-21 .elementor-element-000002c { display:flex !important; flex-direction:column !important; }
+ body.page-id-21 .elementor-element-000002c > :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title { font-size:36px !important; white-space:normal; }
 }
 
 CSS;
