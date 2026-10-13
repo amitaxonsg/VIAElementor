@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Ten common editable responsive templates prepared
+
+- Added [ten new candidate Saved Container template builder](wp-cli/create-ten-common-templates.php) and [editing/QA guide](docs/TEN-COMMON-ELEMENTOR-TEMPLATES.md).
+- Layouts: FAQ accordion, 2-column editorial, 3-column cards, flip boxes, circular track record, profile, services, coaching, classes/programmes, and contact/enquiry with two editable CTAs.
+- All fonts/colours inherit Elementor Site Kit 19 globals, outer spacing from Sylvia Counter Flexbox ID 178, tablet/mobile stacking, and sample text/counter values explicitly marked as placeholders. Flip Cards use a template-scoped HTML widget for the only custom interaction. No Elementor Pro required for saved templates.
+- **GitHub source prepared only**; server lint/dry-run/import and responsive visual approval not yet recorded. No existing templates, header, footer, homepage or published pages were altered by these commits.
+
 ## 2026-10-13 — APPROVED styling freeze, current Saved Templates, and 36-template roadmap
 
 - User confirmed the Homepage 21 branding and layout are **working again** after Elementor Global Kit 19 generated stylesheet `post-19.css` was restored/relinked. Site Kit 19 retained the approved Orange/Navy/Blue variables; no template data or Global Colour values were deleted. The initiating event is not conclusively known. **Do not flush CSS, edit generated stylesheets, reset Typography Studio, or replace approved pages blindly.**
