@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.6.0');
+    wp_register_style('via-pathways-modern', false, [], '1.7.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -37,7 +37,7 @@ body.page-id-21 .elementor-element-0000016 p {
   margin: 0;
 }
 body.page-id-21 .elementor-element-0000017 .elementor-heading-title {
-  color: var(--vpm-navy);
+  /* Heading colour is controlled by its Elementor Global Color. */
   font-family: var(--e-global-typography-primary-font-family, inherit);
   font-size: 36px !important;
   line-height: 1.06 !important;
@@ -103,7 +103,7 @@ body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.eleme
   align-items: center;
   gap: 12px;
   font-family: var(--e-global-typography-primary-font-family, inherit);
-  font-size: clamp(23px, 2vw, 31px) !important;
+  font-size: 25px !important;
   font-weight: 600;
   line-height: 1.13;
   color: var(--vpm-navy) !important;
@@ -229,9 +229,9 @@ body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.eleme
   order: -1;
 }
 body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
-  color: #F1592D !important;
+  /* Elementor widget Global Accent colour is authoritative. */
   font-family: var(--e-global-typography-primary-font-family, inherit);
-  font-size: clamp(35px, 3.4vw, 53px) !important;
+  font-size: 36px !important;
   font-weight: 500;
   line-height: 1.06;
 }
@@ -253,6 +253,45 @@ body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017,.eleme
 /* Deliberately DO NOT manipulate how the two heading widgets sit
    in relation to one another. Future one-line change requires
    a native Elementor inner container, not grid/flex rules on 03 Pathways. */
+
+/* v1.7: single isolated native Elementor heading row. Parent 03 Pathways untouched.
+   The two original widgets remain independently editable in Elementor. */
+body.page-id-21 .elementor-element-b7621a0 {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: baseline !important;
+  align-content: flex-start !important;
+  gap: 0 12px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+}
+body.page-id-21 .elementor-element-b7621a0 > :is(.elementor-element-0000017,.elementor-element-a71c9f2) {
+  display: block !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  align-self: baseline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.page-id-21 .elementor-element-b7621a0 :is(.elementor-element-0000017,.elementor-element-a71c9f2) .elementor-heading-title {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 36px !important;
+  line-height: 1.12 !important;
+  font-family: var(--e-global-typography-primary-font-family, inherit) !important;
+}
+/* Natural wrapping on narrow screens; never shift the entire section. */
+@media(max-width:767px) {
+  body.page-id-21 .elementor-element-b7621a0 { column-gap: 8px !important; row-gap: 2px !important; }
+}
 
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
