@@ -73,3 +73,10 @@ Once user approves each template:
 4. Plan the page-section replacement independently, with a pre-change snapshot and rollback, rather than rebuilding the homepage wholesale.
 
 **User's workflow:** Build and test via SSH → confirm visuals → update GitHub with approved implementation. The user has expressly authorised this initial generator to be put in GitHub before server deployment.
+
+## Safety correction before first server import
+
+- Commit `1f3c43380f2c096f73b68531ac83084214a7352b` fixes Client Voices extraction to use the section's `elements` array rather than the section object itself.
+- Older downloaded copies of `build-homepage-templates.php` should be discarded. Re-download the pinned corrected commit, run `php -l`, then `wp eval-file ... dry-run`.
+- An all-black SSH screenshot is not proof the website is down. Check site HTTP, active WP-CLI processes and `elementor_library` contents read-only before rerunning anything.
+- Do not run `apply` unless all source sections validate and all four proposed template names are absent. No live homepage changes are intended.
