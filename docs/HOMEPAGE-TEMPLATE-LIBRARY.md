@@ -80,3 +80,12 @@ Once user approves each template:
 - Older downloaded copies of `build-homepage-templates.php` should be discarded. Re-download the pinned corrected commit, run `php -l`, then `wp eval-file ... dry-run`.
 - An all-black SSH screenshot is not proof the website is down. Check site HTTP, active WP-CLI processes and `elementor_library` contents read-only before rerunning anything.
 - Do not run `apply` unless all source sections validate and all four proposed template names are absent. No live homepage changes are intended.
+
+## Current live FIRE section mapping — verified with WP-CLI audit (2026-10-13)
+
+The 04 FIRE approach section ID `000003f` was **replaced** on the development homepage during an earlier redesign. The current source is the top-level container `b8800dd` with title `VIA FIRE Native Rows`. Its children are heading row `b5bb7c9` (heading widget IDs `f5391fc`, `931821d`) and steps container `eb885d3` (four row IDs `9c53df3`, `937ef3f`, `de631fa`, `cb93c4a`).
+
+- Older builder runs failed safely on `Homepage source section not uniquely available: 04 FIRE approach`. No template creation was confirmed.
+- New pinned commit `e1fb73d272627dc32d9900c22e4f7e8ebca0406c` makes the builder source FIRE from the **current** native row hierarchy, preserving the existing heading and row widgets rather than rebuilding the obsolete 000003f card format.
+- Corrected builder still requires full `dry-run` validation of **Pathways, FIRE, Client Voices, and Consultation**, including the existing Sylvia counter template. A later error may indicate other content/structure changes; do not force through it.
+- **Not confirmed applied** in WordPress. SSH-first dry run remains the next action.
