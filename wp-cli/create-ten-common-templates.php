@@ -238,7 +238,7 @@ position:absolute;inset:0;box-sizing:border-box;padding:22px;display:flex;justif
 backface-visibility:hidden;-webkit-backface-visibility:hidden;
 transition:transform .45s ease,opacity .45s ease;border-radius:14px}
 .via-flip-v1 .via-flip-v1-card>.via-flip-v1-front{transform:rotateY(0)}
-.via-flip-v1 .via-flip-v1-card>.via-flip-v1-back{transform:rotateY(180deg);opacity:0;background:var(--e-global-color-via_stone,#EEE)}
+.via-flip-v1 .via-flip-v1-card>.via-flip-v1-back{transform:rotateY(180deg);opacity:0;background:var(--e-global-color-via_stone)}
 .via-flip-v1 .via-flip-v1-card.is-flipped>.via-flip-v1-front{transform:rotateY(-180deg);opacity:0}
 .via-flip-v1 .via-flip-v1-card.is-flipped>.via-flip-v1-back{transform:rotateY(0);opacity:1}
 .via-flip-v1 .via-flip-v1-card:focus-visible{outline:3px solid var(--e-global-color-accent);outline-offset:3px}
