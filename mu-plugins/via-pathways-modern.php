@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.0.0');
+    wp_register_style('via-pathways-modern', false, [], '1.1.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -190,6 +190,56 @@ body.page-id-21 :is(.elementor-element-000001d,.elementor-element-0000023,.eleme
 @media (prefers-reduced-motion:reduce) {
   body.page-id-21 :is(.elementor-element-000001e,.elementor-element-0000024,.elementor-element-000002a) { transition: none; }
 }
+
+/* v1.1: card images become full-width editorial visual strips above card titles. */
+body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) {
+  order: -2 !important;
+  width: 100% !important;
+  max-width: none !important;
+  align-self: stretch !important;
+  height: 148px !important;
+  min-height: 148px;
+  margin: -8px 0 20px !important;
+  padding: 14px !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #faf6f0;
+  border-radius: 9px;
+  overflow: hidden;
+}
+body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) .elementor-widget-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center;
+}
+body.page-id-21 :is(.elementor-element-0000019,.elementor-element-000001f,.elementor-element-0000025) {
+  order: -1;
+}
+body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
+  color: #F1592D !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(35px, 3.4vw, 53px) !important;
+  font-weight: 500;
+  line-height: 1.06;
+}
+body.page-id-21 .elementor-element-0000017 { margin-bottom: -10px; }
+@media(max-width:767px) {
+ body.page-id-21 :is(.elementor-element-000001c,.elementor-element-0000022,.elementor-element-0000028) { height: 128px !important; min-height: 128px; }
+}
+
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
 }, 90);
