@@ -8,7 +8,7 @@
 if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
     if (!is_front_page() || (int)get_queried_object_id() !== 21) { return; }
-    wp_register_style('via-pathways-modern', false, [], '1.2.0');
+    wp_register_style('via-pathways-modern', false, [], '1.3.0');
     wp_enqueue_style('via-pathways-modern');
     $css = <<<'CSS'
 /* VIA Frontiers homepage / 03 Pathways. Deliberately scoped to this Elementor ID. */
@@ -262,6 +262,16 @@ body.page-id-21 .elementor-element-a71c9f2 .elementor-heading-title {
   font-family: var(--e-global-typography-primary-font-family, inherit) !important;
 }
 body.page-id-21 .elementor-element-a71c9f2 { margin-bottom: 12px !important; }
+
+/* VIA heading size standard: eyebrow 12px, main section headings 36px.
+   Font families continue to inherit from Elementor Site Kit globals. */
+body.page-id-21 .elementor-element-000002c .elementor-element-0000016 p {
+  font-size: 12px !important;
+}
+body.page-id-21 .elementor-element-000002c :is(.elementor-element-0000017, .elementor-element-a71c9f2) .elementor-heading-title {
+  font-size: 36px !important;
+  font-family: var(--e-global-typography-primary-font-family, inherit) !important;
+}
 
 CSS;
     wp_add_inline_style('via-pathways-modern', $css);
