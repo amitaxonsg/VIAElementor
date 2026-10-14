@@ -1,8 +1,42 @@
-# VIA Frontiers — H1 Typography Ownership and Regression Prevention
+# VIA Frontiers — ALL Typography Ownership and Regression Prevention
 
-Approved: 2026-10-14. Applies to the live VIA Frontiers account `viafront` at `/home/viafront/public_html` on `server.axonserver.com`. Do **not** confuse this with the separate `amitaxon` development account described in older documents.
+**Revised 2026-10-14 at user's instruction:** this policy covers ALL typography, not only H1. It supersedes the H1-only scope of this file's original version.
 
-## Live H1 default (verified by user SSH output)
+## One source of truth
+
+**Elementor-managed typography is the authoritative editable source for all Elementor content.** This includes H1–H6, body text, text-editor widgets, buttons/CTAs, labels, card titles, testimonials, counters, headers, footers, mobile/tablet variants, and typography on saved templates. VIA Typography Studio and the separate Custom CSS plugin must not silently override Elementor widget or global typography settings.
+
+**Important architectural exceptions:** the Astra theme and UAE Header/Footer navigation widget can provide non-Elementor-native controls. Inventory these, preserve approved appearances, and use their documented control surfaces or an approved scoped compatibility rule until they can be safely migrated. Do not claim Elementor controls every menu/dropdown element without checking.
+
+## Verified live starting point
+
+Live WordPress: `https://viafrontiers.com`, cPanel `viafront`, `/home/viafront/public_html`; distinct from `amitaxon` development. Active Elementor Kit 19. User's SSH check confirmed H1 default Inter / 40px / 700 / #262A63 and regenerated Kit CSS. **Other typography defaults and saved plugin overrides have NOT been fully audited or migrated. Do not overwrite them.**
+
+## Permanent CSS policy
+
+- New generic typography enforcement is prohibited across plugins, theme CSS, MU plugins, templates and site Custom CSS. In particular, avoid generic selectors for `h1` through `h6`, `p`, `.elementor-heading-title`, `.elementor-widget-heading`, `.elementor-widget-text-editor`, `.elementor-button`, and broad header/footer text classes that assign font-family, font-size, weight, line-height, letter spacing, text transform or text colour against Elementor's settings.
+- `!important` is especially risky but **not the only issue**; specificity, inline rules and load order can cause a mismatch without `!important`.
+- Retain truly layout-specific CSS and carefully documented third-party compatibility styles. Exception rules must be narrowly scoped, justified and tested against editor controls.
+- Typography Studio may remain available for inspection or diagnostics. Do not disable the plugin wholesale or wipe its saved rules. Migrate approved individual styles into Elementor first, then selectively retire only confirmed conflicting override rules after backup.
+- Do not manually modify Elementor-generated CSS files. Do not make Kit-wide changes to conceal a CSS-cache problem.
+
+## Safe migration and acceptance tests
+
+1. Inventory **all** Typography Studio saved rules, Custom CSS, theme settings, plugin typography, Elementor Kit tokens, header/footer templates and page/widget styles. Capture screenshots plus original rule exports/backups.
+2. Establish a mapping for each typography category from current approved rendered frontend appearance to Elementor global preset, widget setting, or documented third-party native control. Preserve branding, colors and responsive values; avoid mass replacement.
+3. Use a staged dry-run and account-scoped backup; migrate one class at a time. Do not delete source rules before the equivalent native styles display correctly.
+4. For representative examples of headings H1–H6, body paragraphs, CTA, labels, counters, navigation/dropdowns, header/footer, and mobile/tablet text: modify font, size, weight and color in the appropriate editor; verify preview, save, frontend computed styles and refresh; restore approved appearance after test.
+5. For any mismatch, determine the exact winning selector using browser Computed Styles and fix the source instead of adding stronger CSS. Check load/cache effects separately, and verify editor saves independently.
+6. Preserve approved global colours and existing content/layout. Do not reset all Typography Studio rules, delete Elementor Kit 19, or modify unrelated cPanel accounts.
+7. Account-scoped WP-CLI uses `runuser -u viafront -- /opt/cpanel/ea-php83/root/usr/bin/php /usr/local/bin/wp-cli.phar --path=/home/viafront/public_html ...`. The `/usr/local/bin/wp` launcher was observed executing PHP 7.4 and must not be used for this account.
+
+## Status
+
+**GitHub policy updated only.** Live Typography Studio / Custom CSS and the site's other font controls have not yet been migrated or audited in this turn. Real-world editor and frontend parity is **pending**.
+
+## Original H1 verification context
+
+
 
 - Elementor active Site Kit: **19**
 - `h1_typography_font_family`: **Inter**
@@ -12,30 +46,4 @@ Approved: 2026-10-14. Applies to the live VIA Frontiers account `viafront` at `/
 - Generated `uploads/elementor/css/post-19.css` showed `.elementor-kit-19 h1{color:#262A63;font-family:"Inter", Sans-serif;font-size:40px;font-weight:700;}`.
 - This **verifies the default**, not individual widget edit/save success.
 
-## Permanent ownership rule
 
-**Elementor Site Settings control default H1 typography; individual Heading widgets may intentionally override font family, size, weight, and color.** These must visibly apply and persist after saving.
-
-Never add a global typography lock in Custom CSS, Typography Studio, theme CSS, MU plugins, template CSS, or generated Elementor CSS. Prohibited patterns include `h1 { font-family: ... !important; }`, `.elementor-heading-title { font-size: ... !important; }`, and `.elementor-widget-heading h1 { font-weight: ... !important; }` when they enforce site-wide fonts or sizes. Rules without `!important` can also win through specificity or load order, so test the actual cascade.
-
-Custom CSS may define layout, spacing, effects, or *explicitly scoped* exceptions, but never silently defeat a widget typography choice. Avoid hardcoded `font-family`, `font-size`, `font-weight`, or `color` for generic H1/heading selectors. When typography exceptions are approved, scope them to a uniquely named component and document the rationale and impact.
-
-Keep H2–H6, other preset fonts (including Cormorant in the prior brand system), existing colors, header/footer, responsive layout, and content unchanged unless separately approved. **Do not bulk-reset Typography Studio's saved rules**: inspect and back up only confirmed conflicts before targeted adjustments.
-
-## Mandatory review/test before CSS deployment
-
-1. Read the current active CSS plugin and Typography Studio rules and back up the affected original rule(s). Do not assume GitHub contains live server/plugin CSS.
-2. Search for `h1`, `.elementor-heading-title`, `.elementor-widget-heading`, `font-family`, `font-size`, `font-weight`, `color`, and `!important`. Inspect selectors and cascade, including inline/widget styles.
-3. On a representative H1 Heading widget, temporarily change its font to another installed font; confirm editor preview changes. Save on a controlled test page; verify the public view, then restore the original choice. Also check desktop, tablet, and mobile.
-4. If the change saves but is invisible, use browser Computed Styles to identify winning stylesheet/selector. Check generated Elementor CSS and cache layers only after confirming source-of-truth settings.
-5. Avoid manual edits to generated `post-19.css` or repeated blanket `elementor flush-css` as a substitute for resolving an override. If CSS is regenerated, verify stylesheet availability and page output before concluding success.
-6. Use account-scoped WP-CLI with PHP 8.3:
-   `runuser -u viafront -- /opt/cpanel/ea-php83/root/usr/bin/php /usr/local/bin/wp-cli.phar --path=/home/viafront/public_html ...`.
-   Do not use the `/usr/local/bin/wp` launcher for this account; it invokes PHP 7.4 in the verified server output.
-7. Backup -> dry run -> targeted change -> verify -> rollback path. No recursive permissions changes and no unrelated cPanel modifications.
-
-## Deployment status
-
-**Policy documented in GitHub only.** There has been no authenticated SSH change to the live Typography Studio or Custom CSS plugin in this documentation commit. A full audit of live plugin rules and Elementor editor-save behavior is still required before declaring the conflict permanently eliminated.
-
-Related documentation: `docs/APPROVED-WORKING-BASELINE-20261013.md` (development baseline), `docs/BRAND-GUIDE.md` (historical broader typography directions), and `docs/EDITOR-GUIDE.md`.
